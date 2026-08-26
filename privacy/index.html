@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy &mdash; Caught Up</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rock-950: #17130f;
+    --rock-800: #2b241d;
+    --rock-600: #5a5045;
+    --sand-100: #ede6d8;
+    --sand-50: #f6f2e9;
+    --sienna: #b8451f;
+    --sienna-dim: #9a3a19;
+    --dusk: #47606c;
+
+    --bg: var(--sand-50);
+    --bg-raised: var(--sand-100);
+    --ink: var(--rock-950);
+    --ink-soft: var(--rock-600);
+    --accent: var(--sienna);
+    --accent-strong: var(--sienna-dim);
+    --secondary: var(--dusk);
+    --rule: color-mix(in srgb, var(--rock-950) 16%, transparent);
+    --rule-strong: color-mix(in srgb, var(--rock-950) 30%, transparent);
+    --frame-bg: var(--sand-100);
+    --shadow: color-mix(in srgb, var(--rock-950) 10%, transparent);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: var(--rock-950);
+      --bg-raised: var(--rock-800);
+      --ink: var(--sand-50);
+      --ink-soft: color-mix(in srgb, var(--sand-50) 62%, var(--rock-950));
+      --accent: #d8672f;
+      --accent-strong: #e2814f;
+      --secondary: #8fb2c2;
+      --rule: color-mix(in srgb, var(--sand-50) 18%, transparent);
+      --rule-strong: color-mix(in srgb, var(--sand-50) 32%, transparent);
+      --frame-bg: var(--rock-800);
+      --shadow: color-mix(in srgb, black 40%, transparent);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: var(--rock-950);
+    --bg-raised: var(--rock-800);
+    --ink: var(--sand-50);
+    --ink-soft: color-mix(in srgb, var(--sand-50) 62%, var(--rock-950));
+    --accent: #d8672f;
+    --accent-strong: #e2814f;
+    --secondary: #8fb2c2;
+    --rule: color-mix(in srgb, var(--sand-50) 18%, transparent);
+    --rule-strong: color-mix(in srgb, var(--sand-50) 32%, transparent);
+    --frame-bg: var(--rock-800);
+    --shadow: color-mix(in srgb, black 40%, transparent);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  .stamp {
+    font-family: "Space Mono", monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  h1, h2, h3 {
+    font-family: "Zilla Slab", Georgia, serif;
+    font-weight: 600;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  /* ---------- Hero ---------- */
+  header.hero {
+    padding: 72px 0 52px;
+    border-bottom: 1px solid var(--rule);
+  }
+  header.hero .stamp { display: block; margin-bottom: 22px; }
+  header.hero h1 {
+    font-size: clamp(2.3rem, 5.2vw, 3.4rem);
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+  }
+  header.hero .lede {
+    margin-top: 22px;
+    max-width: 34em;
+    font-size: 1.15rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .underline {
+    margin-top: 30px;
+    height: 3px;
+    width: 84px;
+    background: var(--accent);
+  }
+  .effective {
+    margin-top: 26px;
+    font-family: "Space Mono", monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- Sections ---------- */
+  section {
+    padding: 48px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  section:last-of-type { border-bottom: none; }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .section-head .stamp { white-space: nowrap; }
+  .section-head .rule-fill {
+    flex: 1;
+    height: 1px;
+    background: var(--rule-strong);
+  }
+
+  section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 16px;
+  }
+  section h3 {
+    font-size: 1.12rem;
+    margin-top: 26px;
+    margin-bottom: 8px;
+  }
+
+  section p, section li {
+    max-width: 40em;
+    color: var(--ink-soft);
+    font-size: 1.04rem;
+  }
+  section p + p { margin-top: 14px; }
+
+  ul { padding-left: 20px; margin: 12px 0; }
+  li + li { margin-top: 9px; }
+  li strong, p strong { color: var(--ink); font-weight: 600; }
+
+  a { color: var(--accent); }
+  a:hover { color: var(--accent-strong); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  /* ---------- Data table ---------- */
+  .table-scroll { overflow-x: auto; margin-top: 18px; max-width: 40em; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.97rem; }
+  th, td {
+    text-align: left;
+    padding: 11px 14px 11px 0;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink-soft);
+    vertical-align: top;
+  }
+  th {
+    font-family: "Space Mono", monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  td:first-child { color: var(--ink); font-weight: 500; white-space: nowrap; padding-right: 24px; }
+
+  /* ---------- Contact ---------- */
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 24px;
+  }
+  .contact-item .stamp { display: block; margin-bottom: 8px; }
+  .contact-item a, .contact-item span.value {
+    font-family: "Zilla Slab", Georgia, serif;
+    font-size: 1.25rem;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule-strong);
+    padding-bottom: 2px;
+  }
+  .contact-item a:hover { border-bottom-color: var(--accent); color: var(--accent); }
+  .contact-item a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+  /* ---------- Footer ---------- */
+  footer { padding: 34px 0 56px; }
+  footer .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  footer .stamp { color: var(--ink-soft); }
+  footer .stamp .accent { color: var(--accent); }
+  footer a { text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="stamp">Caught Up &mdash; iOS</span>
+    <h1>Privacy Policy</h1>
+    <p class="lede">Caught Up keeps track of what you watch. To do that across your devices it stores a small amount of data about you &mdash; and nothing beyond that. This page says exactly what, where it goes, and how to get rid of it.</p>
+    <div class="underline"></div>
+    <p class="effective">Effective 25 August 2026</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="stamp">01 &mdash; The short version</span>
+      <div class="rule-fill"></div>
+    </div>
+    <h2>No analytics, no advertising, no tracking.</h2>
+    <p>Caught Up contains no analytics service, no advertising SDK, no crash-reporting service, and no third-party tracking of any kind. It does not use the device advertising identifier (IDFA) and never asks to track you across other apps or websites. It does not collect your location or your contacts.</p>
+    <p>We do not sell, rent, or share your personal data. There is no advertising in the app, so there is no one to share it with.</p>
+    <p>What we do store is the account you sign in with, and the shows and episodes you track &mdash; because that is the product.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="stamp">02 &mdash; What we collect</span>
+      <div class="rule-fill"></div>
+    </div>
+    <h2>Your account, and what you're watching.</h2>
+
+    <h3>Account information</h3>
+    <p>When you sign up with an email address, we store that address and a securely hashed form of your password. We never store or see your password in readable form. If you sign in with Google or Facebook instead, we receive your email address and basic profile information from them, and never see your password for those services at all.</p>
+
+    <h3>What you track</h3>
+    <p>When you add a show, mark an episode watched, or rate something, we store that so it survives a reinstall and follows you to another device. In practice that is a small set of numeric identifiers &mdash; not free text, notes, or anything you write:</p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Stored</th><th>What it contains</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Watchlist</td><td>The numeric ID of each show you add.</td></tr>
+          <tr><td>Watched episodes</td><td>The show and episode IDs, the season and episode number, the date you marked it, and the show's genre labels.</td></tr>
+          <tr><td>Ratings</td><td>The show ID, your thumbs rating, and the show's genre labels.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Genre labels are stored alongside your ratings and watch history so the app can suggest shows without having to look every title up again. They describe the show, not you.</p>
+
+    <h3>Notifications</h3>
+    <p>Episode reminders and the weekly digest are scheduled entirely on your device. Nothing about what you watch is sent anywhere to produce them, and Caught Up uses no push notification service.</p>
+
+    <h3>Diagnostic logs</h3>
+    <p>When something goes wrong, the app writes technical detail to the device's own system log to help with troubleshooting. That stays on your device and is not transmitted to us.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="stamp">03 &mdash; Where it goes</span>
+      <div class="rule-fill"></div>
+    </div>
+    <h2>The services involved, and what each one sees.</h2>
+    <p>Caught Up is a small app and relies on a small number of outside services. Each one receives only what it needs to do its job:</p>
+    <ul>
+      <li><strong>Supabase</strong> hosts the account system and the database holding your watchlist, watched episodes, and ratings. Access rules are enforced per row, so your data is readable only by your own account.</li>
+      <li><strong>Apple</strong> handles all subscription payments. We never see or receive your card details. So that a subscription stays attached to the right Caught Up account, each purchase is tagged with a random internal account identifier &mdash; a meaningless string of characters that contains no personal information.</li>
+      <li><strong>Resend</strong> delivers account emails, such as your confirmation code or a password reset. It receives your email address for that purpose.</li>
+      <li><strong>Google</strong> and <strong>Facebook</strong> are involved only if you choose to sign in with one of them.</li>
+      <li><strong>TVmaze</strong> supplies show and episode information. The app requests that data directly, so TVmaze's servers see the request and your device's IP address. No account information is attached to those requests, and TVmaze is never told who is asking.</li>
+    </ul>
+    <p>Your data is stored on servers in the United States. If you are using Caught Up from elsewhere, that means your information is transferred to and processed there.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="stamp">04 &mdash; Your choices</span>
+      <div class="rule-fill"></div>
+    </div>
+    <h2>Getting your data, or getting rid of it.</h2>
+    <p>You can ask us to delete your account and everything stored with it by emailing <a href="mailto:mike@redrockappsllc.com">mike@redrockappsllc.com</a> from the address on the account. Deletion removes your account record along with your watchlist, watched episodes, and ratings. It cannot be undone.</p>
+    <p>You may also ask us for a copy of the data we hold about you, or ask us to correct it. Depending on where you live &mdash; including the European Economic Area, the United Kingdom, and California &mdash; you may have additional rights to access, correct, delete, or port your personal data, and to object to how it is used. We honour these requests regardless of where you live. Write to the address above and we will respond.</p>
+    <p>Cancelling a subscription is handled through your Apple ID in the iOS Settings app, not by us.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="stamp">05 &mdash; Retention</span>
+      <div class="rule-fill"></div>
+    </div>
+    <h2>We keep it while you use the app.</h2>
+    <p>Your account and tracking data are kept for as long as your account exists. When an account is deleted, the associated records are removed at the same time. Backups held by our hosting provider may retain copies for a short period afterwards before they expire.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="stamp">06 &mdash; Children</span>
+      <div class="rule-fill"></div>
+    </div>
+    <h2>Not directed to children.</h2>
+    <p>Caught Up is not intended for children under 13, and we do not knowingly collect personal information from them. If you believe a child has given us their information, write to us and we will delete it.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="stamp">07 &mdash; Changes</span>
+      <div class="rule-fill"></div>
+    </div>
+    <h2>If this changes, it changes here.</h2>
+    <p>When this policy is updated, the effective date at the top of the page changes with it. If a change materially affects how your information is handled, we will say so in the app rather than relying on you to check.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="stamp">08 &mdash; Contact</span>
+      <div class="rule-fill"></div>
+    </div>
+    <h2>Questions about any of this.</h2>
+    <div class="contact-row">
+      <div class="contact-item">
+        <span class="stamp">Email</span>
+        <a href="mailto:mike@redrockappsllc.com">mike@redrockappsllc.com</a>
+      </div>
+      <div class="contact-item">
+        <span class="stamp">Controller</span>
+        <span class="value">Red Rock Apps LLC</span>
+      </div>
+      <div class="contact-item">
+        <span class="stamp">Based in</span>
+        <span class="value">Rocky Mountain foothills, CO</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="stamp"><a href="/">Red Rock Apps <span class="accent">LLC</span></a></span>
+    <span class="stamp">&copy; 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>
