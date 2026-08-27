@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Support &mdash; Caught Up</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rock-950: #17130f;
+    --rock-800: #2b241d;
+    --rock-600: #5a5045;
+    --sand-100: #ede6d8;
+    --sand-50: #f6f2e9;
+    --sienna: #b8451f;
+    --sienna-dim: #9a3a19;
+    --dusk: #47606c;
+
+    --bg: var(--sand-50);
+    --bg-raised: var(--sand-100);
+    --ink: var(--rock-950);
+    --ink-soft: var(--rock-600);
+    --accent: var(--sienna);
+    --accent-strong: var(--sienna-dim);
+    --secondary: var(--dusk);
+    --rule: color-mix(in srgb, var(--rock-950) 16%, transparent);
+    --rule-strong: color-mix(in srgb, var(--rock-950) 30%, transparent);
+    --frame-bg: var(--sand-100);
+    --shadow: color-mix(in srgb, var(--rock-950) 10%, transparent);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: var(--rock-950);
+      --bg-raised: var(--rock-800);
+      --ink: var(--sand-50);
+      --ink-soft: color-mix(in srgb, var(--sand-50) 62%, var(--rock-950));
+      --accent: #d8672f;
+      --accent-strong: #e2814f;
+      --secondary: #8fb2c2;
+      --rule: color-mix(in srgb, var(--sand-50) 18%, transparent);
+      --rule-strong: color-mix(in srgb, var(--sand-50) 32%, transparent);
+      --frame-bg: var(--rock-800);
+      --shadow: color-mix(in srgb, black 40%, transparent);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: var(--rock-950);
+    --bg-raised: var(--rock-800);
+    --ink: var(--sand-50);
+    --ink-soft: color-mix(in srgb, var(--sand-50) 62%, var(--rock-950));
+    --accent: #d8672f;
+    --accent-strong: #e2814f;
+    --secondary: #8fb2c2;
+    --rule: color-mix(in srgb, var(--sand-50) 18%, transparent);
+    --rule-strong: color-mix(in srgb, var(--sand-50) 32%, transparent);
+    --frame-bg: var(--rock-800);
+    --shadow: color-mix(in srgb, black 40%, transparent);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  .stamp {
+    font-family: "Space Mono", monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  h1, h2, h3 {
+    font-family: "Zilla Slab", Georgia, serif;
+    font-weight: 600;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  /* ---------- Hero ---------- */
+  header.hero {
+    padding: 72px 0 52px;
+    border-bottom: 1px solid var(--rule);
+  }
+  header.hero .stamp { display: block; margin-bottom: 22px; }
+  header.hero h1 {
+    font-size: clamp(2.3rem, 5.2vw, 3.4rem);
+    line-height: 1.04;
+    letter-spacing: -0.01em;
+  }
+  header.hero .lede {
+    margin-top: 22px;
+    max-width: 34em;
+    font-size: 1.15rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .underline {
+    margin-top: 30px;
+    height: 3px;
+    width: 84px;
+    background: var(--accent);
+  }
+
+  /* ---------- Sections ---------- */
+  section {
+    padding: 48px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  section:last-of-type { border-bottom: none; }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .section-head .stamp { white-space: nowrap; }
+  .section-head .rule-fill {
+    flex: 1;
+    height: 1px;
+    background: var(--rule-strong);
+  }
+
+  section h2 {
+    font-size: 1.6rem;
+    margin-bottom: 16px;
+  }
+  section h3 {
+    font-size: 1.12rem;
+    margin-top: 26px;
+    margin-bottom: 8px;
+  }
+
+  section p, section li {
+    max-width: 40em;
+    color: var(--ink-soft);
+    font-size: 1.04rem;
+  }
+  section p + p { margin-top: 14px; }
+
+  ul { padding-left: 20px; margin: 12px 0; }
+  li + li { margin-top: 9px; }
+  li strong, p strong { color: var(--ink); font-weight: 600; }
+
+  a { color: var(--accent); }
+  a:hover { color: var(--accent-strong); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  /* ---------- Contact ---------- */
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 24px;
+  }
+  .contact-item .stamp { display: block; margin-bottom: 8px; }
+  .contact-item a, .contact-item span.value {
+    font-family: "Zilla Slab", Georgia, serif;
+    font-size: 1.25rem;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule-strong);
+    padding-bottom: 2px;
+  }
+  .contact-item a:hover { border-bottom-color: var(--accent); color: var(--accent); }
+  .contact-item a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+  /* ---------- Footer ---------- */
+  footer { padding: 34px 0 56px; }
+  footer .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  footer .stamp { color: var(--ink-soft); }
+  footer .stamp .accent { color: var(--accent); }
+  footer a { text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="stamp">Caught Up &mdash; iOS</span>
+    <h1>Support</h1>
+    <p class="lede">Questions, bug reports, or trouble with your account &mdash; here's how to reach us and a few common answers before you do.</p>
+    <div class="underline"></div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="stamp">01 &mdash; Contact us</span>
+      <div class="rule-fill"></div>
+    </div>
+    <h2>The fastest way to reach us.</h2>
+    <p>Email us directly, or use <strong>Settings &rarr; Feedback</strong> inside the app, which pre-fills your app and iOS version so we can help faster.</p>
+    <div class="contact-row">
+      <div class="contact-item">
+        <span class="stamp">Email</span>
+        <a href="mailto:mike@redrockappsllc.com">mike@redrockappsllc.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="stamp">02 &mdash; Common questions</span>
+      <div class="rule-fill"></div>
+    </div>
+
+    <h3>How do I reset my password?</h3>
+    <p>Tap <strong>Forgot password?</strong> on the sign-in screen. We'll email a 6-digit code to confirm it's you, then let you set a new one. If you originally signed up with Google or Facebook, there's no password to reset &mdash; use that same sign-in button instead.</p>
+
+    <h3>How do I delete my account?</h3>
+    <p>Go to <strong>Settings &rarr; Delete Account</strong> inside the app and confirm. This permanently removes your account, watchlist, watched episodes, and ratings, and can't be undone. If an Apple subscription is still active on the account, cancel it first through your Apple ID subscription settings &mdash; deleting the app account doesn't cancel Apple billing, since they're separate systems.</p>
+    <p>If you'd rather not use the app to do it, email us from the address on your account and we'll delete it for you.</p>
+
+    <h3>How do I cancel my subscription?</h3>
+    <p>Subscriptions are billed and managed by Apple, not by us. On your device, go to <strong>Settings &rarr; [your name] &rarr; Subscriptions</strong> to view, change, or cancel.</p>
+
+    <h3>A show or episode looks wrong.</h3>
+    <p>Show and episode data comes from <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze</a>, a third-party database. If a title, air date, or artwork looks off, it's usually accurate to what TVmaze has on file. Let us know anyway &mdash; sometimes there's a real app-side bug behind what looks like a data issue.</p>
+
+    <h3>Where's my data stored?</h3>
+    <p>See our <a href="/privacy">Privacy Policy</a> for the full picture of what's collected and where it goes.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="stamp"><a href="/">Red Rock Apps <span class="accent">LLC</span></a></span>
+    <span class="stamp">&copy; 2026</span>
+  </div>
+</footer>
+
+</body>
+</html>
