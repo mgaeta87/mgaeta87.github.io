@@ -1,0 +1,2 @@
+# macOS creates these in any folder opened in Finder. They are never part of the site.
+.DS_Store
