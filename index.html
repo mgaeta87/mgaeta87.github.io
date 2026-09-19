@@ -287,6 +287,8 @@
     border-radius: 50%;
     background: var(--accent);
   }
+  a.badge { text-decoration: none; transition: border-color 0.15s ease, background 0.15s ease; }
+  a.badge:hover { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 10%, transparent); }
 
   /* ---------- Feature grid ---------- */
   .feature-grid {
@@ -373,7 +375,7 @@
       <div class="rule-fill"></div>
     </div>
     <h2>A calmer home for your watchlist.</h2>
-    <div class="badge">Coming soon &mdash; iOS</div>
+    <a class="badge" href="https://apps.apple.com/app/caught-up-tv-show-tracker/id6811716971">Now on the App Store &mdash; iPhone</a>
     <p>Caught Up is our first release: an app for tracking TV shows &mdash; what's next, what you've finished, and what's worth starting. No feed, no gamification, just your list.</p>
     <div class="frames">
       <figure class="frame">
