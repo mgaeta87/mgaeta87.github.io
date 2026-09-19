@@ -228,7 +228,20 @@
   }
 
   @media (max-width: 620px) {
-    .frames { grid-template-columns: 1fr; }
+    .frames {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      margin: 8px -28px 0;
+      padding: 0 28px 14px;
+      scroll-padding-left: 28px;
+    }
+    .frames figure.frame {
+      flex: 0 0 72%;
+      scroll-snap-align: start;
+    }
   }
 
   /* ---------- Contact ---------- */
@@ -408,6 +421,14 @@
       <figure class="frame">
         <img src="media/caught-up-your-year.jpg" width="828" height="1799" loading="lazy" alt="Caught Up's yearly recap: episodes and shows watched this year, estimated hours, and a most-watched list." />
         <figcaption><span class="idx">Fig. 2</span><span>Your Year</span></figcaption>
+      </figure>
+      <figure class="frame">
+        <img src="media/caught-up-show-detail.jpg" width="828" height="1799" loading="lazy" alt="Caught Up's show page for The Bear: where it streams, thumbs-down, thumbs-up and love-it ratings, and a Continue Watching card with a Mark Watched button." />
+        <figcaption><span class="idx">Fig. 3</span><span>Show Detail</span></figcaption>
+      </figure>
+      <figure class="frame">
+        <img src="media/caught-up-discover.jpg" width="828" height="1799" loading="lazy" alt="Caught Up's Discover screen: a search field above a list of recommended shows, each with an add button." />
+        <figcaption><span class="idx">Fig. 4</span><span>Discover</span></figcaption>
       </figure>
     </div>
     <p class="frames-note">Screens from version 1.0, on iPhone.</p>
