@@ -1,5 +1,26 @@
 {
+  "applinks": {
+    "details": [
+      {
+        "appIDs": [
+          "A3Z3Z69YCP.com.redrockapps.caughtup"
+        ],
+        "components": [
+          {
+            "/": "/i/*",
+            "comment": "Friends invite links"
+          },
+          {
+            "/": "/s/*",
+            "comment": "Show recommendations"
+          }
+        ]
+      }
+    ]
+  },
   "webcredentials": {
-    "apps": ["A3Z3Z69YCP.com.redrockapps.caughtup"]
+    "apps": [
+      "A3Z3Z69YCP.com.redrockapps.caughtup"
+    ]
   }
 }

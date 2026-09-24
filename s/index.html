@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>A friend recommended a show — Caught Up</title>
+<meta property="og:title" content="A friend thinks you should watch this">
+<meta property="og:description" content="Track it in Caught Up, and share what you're watching with friends.">
+<meta property="og:image" content="https://redrockappsllc.com/media/caught-up-icon-512.png">
+<meta property="og:site_name" content="Caught Up">
+<meta name="apple-itunes-app" content="app-id=6811716971">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rock-950: #17130f;
+    --rock-800: #2b241d;
+    --rock-600: #5a5045;
+    --sand-100: #ede6d8;
+    --sand-50: #f6f2e9;
+    --sienna: #b8451f;
+    --sienna-dim: #9a3a19;
+    --dusk: #47606c;
+
+    --bg: var(--sand-50);
+    --bg-raised: var(--sand-100);
+    --ink: var(--rock-950);
+    --ink-soft: var(--rock-600);
+    --accent: var(--sienna);
+    --accent-strong: var(--sienna-dim);
+    --secondary: var(--dusk);
+    --rule: color-mix(in srgb, var(--rock-950) 16%, transparent);
+    --rule-strong: color-mix(in srgb, var(--rock-950) 30%, transparent);
+    --frame-bg: var(--sand-100);
+    --shadow: color-mix(in srgb, var(--rock-950) 10%, transparent);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: var(--rock-950);
+      --bg-raised: var(--rock-800);
+      --ink: var(--sand-50);
+      --ink-soft: color-mix(in srgb, var(--sand-50) 62%, var(--rock-950));
+      --accent: #d8672f;
+      --accent-strong: #e2814f;
+      --secondary: #8fb2c2;
+      --rule: color-mix(in srgb, var(--sand-50) 18%, transparent);
+      --rule-strong: color-mix(in srgb, var(--sand-50) 32%, transparent);
+      --frame-bg: var(--rock-800);
+      --shadow: color-mix(in srgb, black 40%, transparent);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: var(--rock-950);
+    --bg-raised: var(--rock-800);
+    --ink: var(--sand-50);
+    --ink-soft: color-mix(in srgb, var(--sand-50) 62%, var(--rock-950));
+    --accent: #d8672f;
+    --accent-strong: #e2814f;
+    --secondary: #8fb2c2;
+    --rule: color-mix(in srgb, var(--sand-50) 18%, transparent);
+    --rule-strong: color-mix(in srgb, var(--sand-50) 32%, transparent);
+    --frame-bg: var(--rock-800);
+    --shadow: color-mix(in srgb, black 40%, transparent);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  .stamp {
+    font-family: "Space Mono", monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  h1, h2, h3 {
+    font-family: "Zilla Slab", Georgia, serif;
+    font-weight: 600;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  /* ---------- Footer ---------- */
+  footer { padding: 34px 0 56px; }
+  footer .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  footer .stamp { color: var(--ink-soft); }
+  footer .stamp .accent { color: var(--accent); }
+  footer a { text-decoration: none; }
+
+  /* ---------- Site nav ---------- */
+  nav.sitenav { border-bottom: 1px solid var(--rule); }
+  nav.sitenav .wrap { display: flex; gap: 28px; padding: 16px 28px; }
+  nav.sitenav a {
+    font-family: "Space Mono", monospace;
+    font-size: 12.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+  }
+  nav.sitenav a:hover { color: var(--ink); }
+  nav.sitenav a.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  a { color: var(--accent); }
+  a:hover { color: var(--accent-strong); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  /* ---------- Invite ---------- */
+  main { padding: 56px 0 44px; border-bottom: 1px solid var(--rule); }
+  main .stamp { display: block; margin-bottom: 20px; }
+  .title-row { display: flex; align-items: center; gap: 18px; }
+  .app-icon { width: 72px; height: 72px; border-radius: 16px; flex: none; box-shadow: 0 2px 10px var(--shadow); }
+  h1 { font-size: clamp(2rem, 6vw, 2.9rem); line-height: 1.05; letter-spacing: -0.01em; }
+  .lede { margin: 22px 0 0; max-width: 32em; font-size: 1.12rem; line-height: 1.55; color: var(--ink-soft); }
+  .cta {
+    display: inline-block; margin-top: 30px; padding: 15px 26px; border-radius: 12px;
+    background: var(--accent); color: #fff; text-decoration: none;
+    font-family: "Archivo", "Helvetica Neue", Arial, sans-serif; font-weight: 600; font-size: 1.05rem;
+  }
+  .cta:hover { background: var(--accent-strong); color: #fff; }
+  .cta:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .steps { margin-top: 38px; padding-top: 22px; border-top: 1px solid var(--rule); max-width: 34em; }
+  .steps .stamp { color: var(--ink-soft); margin-bottom: 12px; }
+  .steps ol { margin: 0; padding-left: 22px; color: var(--ink-soft); }
+  .steps li + li { margin-top: 8px; }
+  .steps strong { color: var(--ink); font-weight: 600; }
+  .steps p { color: var(--ink-soft); margin: 12px 0 0; font-size: 0.98rem; }
+  .open-app { display: inline-block; margin-top: 26px; color: var(--secondary); }
+  .open-app[hidden] { display: none; }
+  .poster { width: 96px; aspect-ratio: 2 / 3; border-radius: 8px; object-fit: cover; flex: none; background: var(--frame-bg); box-shadow: 0 2px 10px var(--shadow); }
+  .meta { margin-top: 8px; color: var(--ink-soft); font-size: 0.98rem; }
+  .credit { margin-top: 20px; font-size: 0.85rem; color: var(--ink-soft); }
+</style>
+</head>
+<body>
+
+<nav class="sitenav">
+  <div class="wrap">
+    <a href="/">Home</a>
+    <a href="/privacy">Privacy</a>
+    <a href="/support">Support</a>
+  </div>
+</nav>
+
+<!-- A recommendation link: https://redrockappsllc.com/s/?id=<TVmaze show id>&from=<invite code>.
+     With Caught Up installed, iOS opens the show in the app instead. Otherwise this page names the
+     show, from TVmaze's public API in the browser (their data is CC BY-SA, hence the credit line). -->
+<main>
+  <div class="wrap">
+    <span class="stamp">Caught Up &mdash; a recommendation</span>
+    <div class="title-row">
+      <img class="poster" id="poster" alt="" hidden>
+      <div>
+        <h1 id="title">A friend recommended a show</h1>
+        <p class="meta" id="meta"></p>
+      </div>
+    </div>
+    <p class="lede">Track it in Caught Up, and share what you're watching with friends.</p>
+    <a class="cta" href="https://apps.apple.com/app/caught-up-tv-show-tracker/id6811716971">Get Caught Up on the App Store</a>
+
+    <div class="steps">
+      <span class="stamp">To find your friend</span>
+      <p>Open <strong>Friends</strong> in Caught Up and turn on <strong>Let Friends Find Me</strong>. If you each have the other's number saved, you'll see each other right away.</p>
+    </div>
+
+    <a class="open-app" id="open-app" href="#" hidden>Already have the app? Open the show</a>
+    <p class="credit" id="credit" hidden>Show details from <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze</a>.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="stamp"><a href="/">Red Rock Apps <span class="accent">LLC</span></a></span>
+    <span class="stamp">&copy; 2026</span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var params = new URLSearchParams(location.search);
+    var id = params.get("id") || "";
+    var from = params.get("from") || "";
+    if (!/^[1-9][0-9]{0,8}$/.test(id)) return;
+    var uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+    var open = document.getElementById("open-app");
+    open.href = "tvtracker://show/" + id + (uuid.test(from) ? "?from=" + from.toLowerCase() : "");
+    open.hidden = false;
+
+    // Text goes in with textContent, never innerHTML: the show's fields come from a third party.
+    fetch("https://api.tvmaze.com/shows/" + id)
+      .then(function (response) { return response.ok ? response.json() : null; })
+      .then(function (show) {
+        if (!show || !show.name) return;
+        document.getElementById("title").textContent = "A friend thinks you should watch " + show.name;
+        document.title = show.name + " — recommended on Caught Up";
+        var channel = (show.webChannel && show.webChannel.name) || (show.network && show.network.name);
+        document.getElementById("meta").textContent = (show.genres || []).slice(0, 3).concat(channel ? [channel] : []).join(" · ");
+        open.textContent = "Already have the app? Open " + show.name;
+        var image = show.image && (show.image.medium || show.image.original);
+        if (image && /^https:\/\/static\.tvmaze\.com\//.test(image)) {
+          var poster = document.getElementById("poster");
+          poster.src = image;
+          poster.hidden = false;
+        }
+        document.getElementById("credit").hidden = false;
+      })
+      .catch(function () {});
+  })();
+</script>
+
+</body>
+</html>
