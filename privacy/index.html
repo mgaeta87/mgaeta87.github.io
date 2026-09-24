@@ -309,6 +309,9 @@
     <h3>Promo codes</h3>
     <p>If you unlock Caught Up with a promo code, we store which code you redeemed and when, so that each code can only be used once. That is the whole record &mdash; a code, a timestamp, and the account it belongs to.</p>
 
+    <h3>Feedback</h3>
+    <p>If you send feedback from inside the app (Settings &rarr; Send Feedback or Report a Bug), we store your message, the app and iOS versions you were using, which account sent it and when, and email it to us so we can read it and reply to your account&rsquo;s email address. At most ten messages a day can be sent from one account. The stored copy is deleted with your account; the email we received stays in our inbox. If you email us instead, we see only what you send.</p>
+
     <h3>Friends</h3>
     <p>Friends is optional; none of this is collected unless you set it up. When you do:</p>
     <div class="table-scroll">
@@ -328,7 +331,7 @@
       </table>
     </div>
     <p><strong>What friends see.</strong> The people you connect with see your name, the shows you&rsquo;re watching and how far along you are, the shows you&rsquo;ve finished, and the shows you loved or liked. They never see your email address, your phone number, your watch list, or the shows you didn&rsquo;t like. Your name is also shown to anyone you send your invite link to, and, if you&rsquo;re findable, to people whose number you have and who have yours. You can hide any show, pause sharing, remove a friend, or stop being findable at any time.</p>
-    <p>To prevent abuse, we briefly record when some Friends actions were used, such as contact checks and reports, and delete those records within a day.</p>
+    <p>To prevent abuse, we briefly record when some Friends actions were used, such as contact checks and reports, and delete those records after a day.</p>
 
     <h3>Notifications</h3>
     <p>Episode reminders and the weekly reminder are scheduled entirely on your device. Nothing about what you watch is sent anywhere to produce them. The only notifications sent from our servers are for Friends &mdash; a friend request, an accepted request, someone joining from your invite or from your contacts &mdash; and they are delivered by Apple&rsquo;s push notification service. Friends may also send your phone a silent signal to check your contacts right away; it carries no information about anyone.</p>
@@ -349,7 +352,7 @@
     <ul>
       <li><strong>Supabase</strong> hosts the account system and the database holding your watchlist, watched episodes, ratings, and Friends data. Access rules are enforced per row, so your data is readable only by your own account; what friends see is assembled on the server, only for people you&rsquo;re connected to.</li>
       <li><strong>Apple</strong> handles all subscription payments. We never see or receive your card details. So that a subscription stays attached to the right Caught Up account, each purchase is tagged with a random internal account identifier &mdash; a meaningless string of characters that contains no personal information.</li>
-      <li><strong>Resend</strong> delivers account emails, such as your confirmation code or a password reset. It receives your email address for that purpose. It also delivers Friends reports to us, so it handles what a report contains.</li>
+      <li><strong>Resend</strong> delivers account emails, such as your confirmation code or a password reset. It receives your email address for that purpose. It also delivers Friends reports and in-app feedback to us, so it handles what those contain.</li>
       <li><strong>Apple</strong> delivers Friends notifications through its push notification service, which receives your phone&rsquo;s push address and the text of the notification, such as &ldquo;Brandon sent you a friend request.&rdquo;</li>
       <li><strong>Google</strong> and <strong>Facebook</strong> are involved only if you choose to sign in with one of them, and share what&rsquo;s described in &ldquo;Account information&rdquo; above. <strong>Apple</strong> is involved in the same way if you choose Sign in with Apple.</li>
       <li><strong>TVmaze</strong> supplies show and episode information. The app requests that data directly, so TVmaze's servers see the request and your device's IP address. No account information is attached to those requests, and TVmaze is never told who is asking. The same goes for show posters, which come from TVmaze too.</li>
