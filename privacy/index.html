@@ -250,6 +250,7 @@
   <div class="wrap">
     <a href="/">Home</a>
     <a href="/privacy" class="active">Privacy</a>
+    <a href="/terms">Terms</a>
     <a href="/support">Support</a>
   </div>
 </nav>
@@ -271,9 +272,9 @@
       <div class="rule-fill"></div>
     </div>
     <h2>No analytics, no advertising, no tracking.</h2>
-    <p>Caught Up contains no analytics service, no advertising SDK, no crash-reporting service, and no third-party tracking of any kind. It does not use the device advertising identifier (IDFA) and never asks to track you across other apps or websites. It does not collect your location or your contacts.</p>
-    <p>We do not sell, rent, or share your personal data. There is no advertising in the app, so there is no one to share it with.</p>
-    <p>What we do store is the account you sign in with, and the shows and episodes you track &mdash; because that is the product.</p>
+    <p>Caught Up contains no analytics service, no advertising SDK, no crash-reporting service, and no third-party tracking of any kind. It does not use the device advertising identifier (IDFA) and never asks to track you across other apps or websites. It does not collect your location. If you use Friends, it checks your contacts for people you know without keeping your address book &mdash; see &ldquo;Friends&rdquo; below.</p>
+    <p>We do not sell or rent your personal data, and we share it with no one you haven&rsquo;t chosen to share it with. There is no advertising in the app, so there is no one to sell it to.</p>
+    <p>What we do store is the account you sign in with, and the shows and episodes you track &mdash; because that is the product. If you choose to use Friends, we also store what it needs to connect you with people you know, and your friends see what you&rsquo;re watching.</p>
   </div>
 </section>
 
@@ -308,8 +309,29 @@
     <h3>Promo codes</h3>
     <p>If you unlock Caught Up with a promo code, we store which code you redeemed and when, so that each code can only be used once. That is the whole record &mdash; a code, a timestamp, and the account it belongs to.</p>
 
+    <h3>Friends</h3>
+    <p>Friends is optional; none of this is collected unless you set it up. When you do:</p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th>Stored</th><th>What it contains</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Your profile</td><td>The name you choose, whether people who have your number can find you, and whether you&rsquo;ve paused sharing. If you add your phone number, we store only a scrambled form of it (a one-way hash), never the number itself; the number as you typed it stays on your phone.</td></tr>
+          <tr><td>Contact matches</td><td>To find friends, your phone scrambles the phone numbers in your contacts the same way and sends them to be compared with people on Caught Up who have chosen to be findable. They are compared and discarded, not stored. What we keep is the record that you have a findable person&rsquo;s number, so that when each of you has the other&rsquo;s number you can be suggested to each other. Each record stops counting after 60 days unless a newer check renews it. Your address book is never uploaded or kept.</td></tr>
+          <tr><td>Friends and requests</td><td>Who you&rsquo;re connected to, requests you&rsquo;ve sent or received, and when.</td></tr>
+          <tr><td>Invite link</td><td>A random code for your invite link, which you can reset at any time.</td></tr>
+          <tr><td>Hidden shows and blocks</td><td>Shows you&rsquo;ve hidden from friends, and people you&rsquo;ve blocked.</td></tr>
+          <tr><td>Reports</td><td>If you report someone: who you reported, the reason, any note you wrote, and their name at the time. Reports are read by us and are never shown to the person reported.</td></tr>
+          <tr><td>Notification devices</td><td>So Friends notifications reach you, the push address Apple gives the app on each of your phones, and a short-lived record of each Friends notification sent (who it was for, who it was about, what kind, when). Sent notifications are deleted after 30 days.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>What friends see.</strong> The people you connect with see your name, the shows you&rsquo;re watching and how far along you are, the shows you&rsquo;ve finished, and the shows you loved or liked. They never see your email address, your phone number, your watch list, or the shows you didn&rsquo;t like. Your name is also shown to anyone you send your invite link to, and, if you&rsquo;re findable, to people whose number you have and who have yours. You can hide any show, pause sharing, remove a friend, or stop being findable at any time.</p>
+    <p>To prevent abuse, we briefly record when some Friends actions were used, such as contact checks and reports, and delete those records within a day.</p>
+
     <h3>Notifications</h3>
-    <p>Episode reminders and the weekly reminder are scheduled entirely on your device. Nothing about what you watch is sent anywhere to produce them, and Caught Up uses no push notification service.</p>
+    <p>Episode reminders and the weekly reminder are scheduled entirely on your device. Nothing about what you watch is sent anywhere to produce them. The only notifications sent from our servers are for Friends &mdash; a friend request, an accepted request, someone joining from your invite or from your contacts &mdash; and they are delivered by Apple&rsquo;s push notification service.</p>
 
     <h3>Diagnostic logs</h3>
     <p>When something goes wrong, the app writes technical detail to the device's own system log to help with troubleshooting. That stays on your device and is not transmitted to us.</p>
@@ -325,9 +347,10 @@
     <h2>The services involved, and what each one sees.</h2>
     <p>Caught Up is a small app and relies on a small number of outside services. Each one receives only what it needs to do its job:</p>
     <ul>
-      <li><strong>Supabase</strong> hosts the account system and the database holding your watchlist, watched episodes, and ratings. Access rules are enforced per row, so your data is readable only by your own account.</li>
+      <li><strong>Supabase</strong> hosts the account system and the database holding your watchlist, watched episodes, ratings, and Friends data. Access rules are enforced per row, so your data is readable only by your own account; what friends see is assembled on the server, only for people you&rsquo;re connected to.</li>
       <li><strong>Apple</strong> handles all subscription payments. We never see or receive your card details. So that a subscription stays attached to the right Caught Up account, each purchase is tagged with a random internal account identifier &mdash; a meaningless string of characters that contains no personal information.</li>
-      <li><strong>Resend</strong> delivers account emails, such as your confirmation code or a password reset. It receives your email address for that purpose.</li>
+      <li><strong>Resend</strong> delivers account emails, such as your confirmation code or a password reset. It receives your email address for that purpose. It also delivers Friends reports to us, so it handles what a report contains.</li>
+      <li><strong>Apple</strong> delivers Friends notifications through its push notification service, which receives your phone&rsquo;s push address and the text of the notification, such as &ldquo;Brandon sent you a friend request.&rdquo;</li>
       <li><strong>Google</strong> and <strong>Facebook</strong> are involved only if you choose to sign in with one of them, and share what&rsquo;s described in &ldquo;Account information&rdquo; above. <strong>Apple</strong> is involved in the same way if you choose Sign in with Apple.</li>
       <li><strong>TVmaze</strong> supplies show and episode information. The app requests that data directly, so TVmaze's servers see the request and your device's IP address. No account information is attached to those requests, and TVmaze is never told who is asking. The same goes for show posters, which come from TVmaze too.</li>
       <li><strong>GitHub</strong> hosts this website. The list of shows that Discover recommends from is downloaded from it, so GitHub&rsquo;s servers see that request and your device&rsquo;s IP address, as they would for any visit to this site. Nothing about you or your account is sent.</li>
@@ -344,7 +367,8 @@
       <div class="rule-fill"></div>
     </div>
     <h2>Getting your data, or getting rid of it.</h2>
-    <p>You can delete your account at any time from inside the app &mdash; Settings &rarr; Delete Account. If your subscription has lapsed and you're seeing the subscribe screen instead, Delete Account is on that screen too, so deleting never requires paying first. Deletion removes your account record along with your watchlist, watched episodes, and ratings, and it can't be undone. If you'd rather not use the app to do it, email <a href="mailto:mike@redrockappsllc.com">mike@redrockappsllc.com</a> from the address on the account and we'll delete it for you.</p>
+    <p>You can delete your account at any time from inside the app &mdash; Settings &rarr; Delete Account. If your subscription has lapsed and you're seeing the subscribe screen instead, Delete Account is on that screen too, so deleting never requires paying first. Deletion removes your account record along with your watchlist, watched episodes, ratings, and everything Friends stored about you, and it can't be undone. If you'd rather not use the app to do it, email <a href="mailto:mike@redrockappsllc.com">mike@redrockappsllc.com</a> from the address on the account and we'll delete it for you.</p>
+    <p>Within Friends you can change your name, remove your phone number, stop being findable, pause sharing, hide a show, remove a friend, or block someone at any time, from the Friends tab.</p>
     <p>Deleting your account doesn't cancel an active subscription — that's managed separately through your Apple ID, and the app will tell you to cancel it first if one is active.</p>
     <p>You may also ask us for a copy of the data we hold about you, or ask us to correct it. Depending on where you live &mdash; including the European Economic Area, the United Kingdom, and California &mdash; you may have additional rights to access, correct, delete, or port your personal data, and to object to how it is used. We honour these requests regardless of where you live. Write to the address above and we will respond.</p>
   </div>
