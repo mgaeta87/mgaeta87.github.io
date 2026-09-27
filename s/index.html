@@ -190,8 +190,10 @@
     <a class="cta" href="https://apps.apple.com/app/caught-up-tv-show-tracker/id6811716971">Get Caught Up on the App Store</a>
 
     <div class="steps">
-      <span class="stamp">To find your friend</span>
-      <p>Open <strong>Friends</strong> in Caught Up and add your phone number. If you each have the other's number saved, you'll see each other right away.</p>
+      <span class="stamp">Then</span>
+      <p>Install Caught Up, then come back to this page and tap the link below. It waits while you sign up.</p>
+      <p id="connect-note" hidden>You can connect with your friend from there too.</p>
+      <p>Already have Caught Up? Friends needs version 2.0 or later, so update it in the App Store first.</p>
     </div>
 
     <a class="open-app" id="open-app" href="#" hidden>Already have the app? Open the show</a>
@@ -217,6 +219,9 @@
     var open = document.getElementById("open-app");
     open.href = "tvtracker://show/" + id + (uuid.test(from) ? "?from=" + from.toLowerCase() : "");
     open.hidden = false;
+    // Only a link from someone who has set up Friends carries their invite, and only then is there
+    // anyone to connect with.
+    if (uuid.test(from)) document.getElementById("connect-note").hidden = false;
 
     // Text goes in with textContent, never innerHTML: the show's fields come from a third party.
     fetch("https://api.tvmaze.com/shows/" + id)
