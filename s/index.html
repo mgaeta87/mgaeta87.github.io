@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>A friend recommended a show — Caught Up</title>
+<title>A friend recommended a show — Screen Night</title>
 <meta property="og:title" content="A friend thinks you should watch this">
-<meta property="og:description" content="Track it in Caught Up, and share what you're watching with friends.">
+<meta property="og:description" content="Track it in Screen Night, and share what you're watching with friends.">
 <meta property="og:image" content="https://redrockappsllc.com/media/caught-up-icon-512.png">
-<meta property="og:site_name" content="Caught Up">
+<meta property="og:site_name" content="Screen Night">
 <meta name="apple-itunes-app" content="app-id=6811716971">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
@@ -174,11 +174,11 @@
 </nav>
 
 <!-- A recommendation link: https://redrockappsllc.com/s/?id=<TVmaze show id>&from=<invite code>.
-     With Caught Up installed, iOS opens the show in the app instead. Otherwise this page names the
+     With Screen Night installed, iOS opens the show in the app instead. Otherwise this page names the
      show, from TVmaze's public API in the browser (their data is CC BY-SA, hence the credit line). -->
 <main>
   <div class="wrap">
-    <span class="stamp">Caught Up &mdash; a recommendation</span>
+    <span class="stamp">Screen Night &mdash; a recommendation</span>
     <div class="title-row">
       <img class="poster" id="poster" alt="" hidden>
       <div>
@@ -186,14 +186,14 @@
         <p class="meta" id="meta"></p>
       </div>
     </div>
-    <p class="lede">Track it in Caught Up, and share what you're watching with friends.</p>
-    <a class="cta" href="https://apps.apple.com/app/caught-up-tv-show-tracker/id6811716971">Get Caught Up on the App Store</a>
+    <p class="lede">Track it in Screen Night, and share what you're watching with friends.</p>
+    <a class="cta" href="https://apps.apple.com/app/apple-store/id6811716971?pt=129355858&amp;ct=rec&amp;mt=8">Get Screen Night on the App Store</a>
 
     <div class="steps">
       <span class="stamp">Then</span>
-      <p>Install Caught Up, then come back to this page and tap the link below. It waits while you sign up.</p>
+      <p>Install Screen Night, then come back to this page and tap the link below. It waits while you sign up.</p>
       <p id="connect-note" hidden>You can connect with your friend from there too.</p>
-      <p>Already have Caught Up? Friends needs version 2.0 or later, so update it in the App Store first.</p>
+      <p>Already have Screen Night? Friends needs version 2.0 or later, so update it in the App Store first.</p>
     </div>
 
     <a class="open-app" id="open-app" href="#" hidden>Already have the app? Open the show</a>
@@ -229,7 +229,7 @@
       .then(function (show) {
         if (!show || !show.name) return;
         document.getElementById("title").textContent = "A friend thinks you should watch " + show.name;
-        document.title = show.name + " — recommended on Caught Up";
+        document.title = show.name + " — recommended on Screen Night";
         var channel = (show.webChannel && show.webChannel.name) || (show.network && show.network.name);
         document.getElementById("meta").textContent = (show.genres || []).slice(0, 3).concat(channel ? [channel] : []).join(" · ");
         open.textContent = "Already have the app? Open " + show.name;
