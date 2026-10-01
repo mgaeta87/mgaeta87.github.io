@@ -3,13 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Red Rock Apps</title>
+<title>Screen Night: TV show tracker for iPhone | Red Rock Apps</title>
+<meta name="description" content="Screen Night is a TV show tracker for iPhone. Up Next lists every show's next episode in air-date order, you mark episodes watched as you go, and friends you choose can see what you're watching. No ads. 7-day free trial, then $1.99 a month or $12.99 a year.">
+<link rel="canonical" href="https://redrockappsllc.com/">
+<meta name="apple-itunes-app" content="app-id=6811716971, affiliate-data=pt=129355858&amp;ct=web-home-banner&amp;mt=8">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Red Rock Apps">
+<meta property="og:url" content="https://redrockappsllc.com/">
+<meta property="og:title" content="Screen Night: TV show tracker for iPhone">
+<meta property="og:description" content="Every show's next episode in air-date order, episode-by-episode tracking, and what your friends are watching. No ads.">
+<meta property="og:image" content="https://redrockappsllc.com/media/screen-night-launch.jpg">
+<meta property="og:image:width" content="1920">
+<meta property="og:image:height" content="1080">
+<meta property="og:image:alt" content="Screen Night's Up Next screen on an iPhone.">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500;600;700&family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/fonts/fonts.css">
 <style>
   :root {
     --rock-950: #17130f;
@@ -116,8 +127,8 @@
   }
   header.hero .stamp { display: block; margin-bottom: 22px; }
   header.hero h1 {
-    font-size: clamp(2.6rem, 6vw, 4.1rem);
-    line-height: 1.02;
+    font-size: clamp(2.3rem, 5.2vw, 3.4rem);
+    line-height: 1.04;
     letter-spacing: -0.01em;
   }
   header.hero h1 .rock { color: var(--accent); }
@@ -365,24 +376,113 @@
   }
   nav.sitenav a:hover { color: var(--ink); }
   nav.sitenav a.active { color: var(--accent); border-bottom-color: var(--accent); }
+  @media (max-width: 420px) { nav.sitenav .wrap { gap: 16px; padding: 16px 20px; flex-wrap: wrap; } }
+  header.hero .badge { margin: 26px 0 0; }
+  ul.feature-list { max-width: 40em; padding-left: 20px; margin: 12px 0 18px; }
+  ul.feature-list li { color: var(--ink-soft); font-size: 1.04rem; }
+  ul.feature-list li + li { margin-top: 9px; }
+  ul.feature-list li strong { color: var(--ink); font-weight: 600; }
+  section h3.list-head { margin-top: 26px; }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://redrockappsllc.com/#organization",
+      "name": "Red Rock Apps",
+      "legalName": "Red Rock Apps LLC",
+      "url": "https://redrockappsllc.com/",
+      "logo": "https://redrockappsllc.com/apple-touch-icon.png",
+      "email": "mike@redrockappsllc.com",
+      "description": "An independent software studio in Colorado that makes Screen Night, a TV show tracker for iPhone.",
+      "address": { "@type": "PostalAddress", "addressRegion": "CO", "addressCountry": "US" },
+      "sameAs": [ "https://apps.apple.com/us/developer/red-rock-apps-llc/id6811716973" ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://redrockappsllc.com/#website",
+      "name": "Red Rock Apps",
+      "alternateName": "Red Rock Apps LLC",
+      "url": "https://redrockappsllc.com/",
+      "publisher": { "@id": "https://redrockappsllc.com/#organization" }
+    },
+    {
+      "@type": "MobileApplication",
+      "@id": "https://redrockappsllc.com/#screen-night",
+      "name": "Screen Night",
+      "alternateName": "Screen Night: TV Show Tracker",
+      "description": "Track TV shows episode by episode on iPhone. Up Next lists every show's next episode in air-date order, Friends shows what the people you connect with are watching and loved, and a yearly recap counts your episodes and hours. No ads. 7-day free trial, then $1.99 a month or $12.99 a year.",
+      "operatingSystem": "iOS 17.0 or later",
+      "availableOnDevice": "iPhone",
+      "applicationCategory": "EntertainmentApplication",
+      "contentRating": "13+",
+      "url": "https://redrockappsllc.com/",
+      "downloadUrl": "https://apps.apple.com/us/app/screen-night-tv-show-tracker/id6811716971",
+      "sameAs": [ "https://apps.apple.com/us/app/screen-night-tv-show-tracker/id6811716971" ],
+      "image": "https://redrockappsllc.com/media/screen-night-launch.jpg",
+      "screenshot": [
+        "https://redrockappsllc.com/media/screen-night-up-next.jpg",
+        "https://redrockappsllc.com/media/screen-night-friends.jpg",
+        "https://redrockappsllc.com/media/screen-night-discover.jpg",
+        "https://redrockappsllc.com/media/screen-night-your-viewing.jpg"
+      ],
+      "publisher": { "@id": "https://redrockappsllc.com/#organization" },
+      "author": { "@id": "https://redrockappsllc.com/#organization" },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Screen Night monthly subscription",
+          "description": "7-day free trial, then $1.99 a month. Renews automatically until cancelled.",
+          "price": "1.99",
+          "priceCurrency": "USD",
+          "url": "https://apps.apple.com/us/app/screen-night-tv-show-tracker/id6811716971",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "1.99",
+            "priceCurrency": "USD",
+            "referenceQuantity": { "@type": "QuantitativeValue", "value": 1, "unitCode": "MON" }
+          }
+        },
+        {
+          "@type": "Offer",
+          "name": "Screen Night yearly subscription",
+          "description": "7-day free trial, then $12.99 a year. Renews automatically until cancelled.",
+          "price": "12.99",
+          "priceCurrency": "USD",
+          "url": "https://apps.apple.com/us/app/screen-night-tv-show-tracker/id6811716971",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "12.99",
+            "priceCurrency": "USD",
+            "referenceQuantity": { "@type": "QuantitativeValue", "value": 1, "unitCode": "ANN" }
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
 <nav class="sitenav">
   <div class="wrap">
     <a href="/" class="active">Home</a>
-    <a href="/privacy">Privacy</a>
-    <a href="/terms">Terms</a>
-    <a href="/support">Support</a>
+    <a href="/compare/">Compare</a>
+    <a href="/privacy/">Privacy</a>
+    <a href="/terms/">Terms</a>
+    <a href="/support/">Support</a>
   </div>
 </nav>
 
 <header class="hero">
   <div class="wrap">
-    <span class="stamp reveal">Independent Software Studio &mdash; Colorado</span>
-    <h1 class="reveal reveal-delay-1">Red <span class="rock">Rock</span> Apps</h1>
-    <p class="lede reveal reveal-delay-2">We build focused mobile applications for consumers &mdash; made to solve real problems, not pad a feature list.</p>
+    <span class="stamp reveal">Red Rock Apps LLC</span>
+    <h1 class="reveal reveal-delay-1"><span class="rock">Screen Night</span>: a TV show tracker for you and the people you watch with</h1>
+    <p class="lede reveal reveal-delay-2">Keep up with every show you watch, episode by episode. Up Next lists each show's next episode in air-date order, and Friends shows what the people you choose are watching and loved. No ads. Try it free for 7 days, then $1.99 a month or $12.99 a year.</p>
+    <a class="badge reveal reveal-delay-2" href="https://apps.apple.com/app/apple-store/id6811716971?pt=129355858&amp;ct=web-home&amp;mt=8">Now on the App Store &mdash; iPhone</a>
     <div class="underline reveal reveal-delay-2"></div>
   </div>
 </header>
@@ -408,9 +508,19 @@
       <div class="rule-fill"></div>
     </div>
     <h2>A calmer home for your watchlist.</h2>
-    <a class="badge" href="https://apps.apple.com/app/apple-store/id6811716971?pt=129355858&amp;ct=web-home&amp;mt=8">Now on the App Store &mdash; iPhone</a>
-    <p>Screen Night is our first release: an app for tracking TV shows &mdash; what's next, what you've finished, and what's worth starting, and what your friends are watching, if you add them. No gamification, no ads.</p>
-    <p><a href="/compare">See how it compares with other TV trackers &rarr;</a></p>
+    <p>Screen Night is an app for tracking TV shows: what's next, what you've finished, what's worth starting, and what your friends are watching, if you add them. No gamification, no ads.</p>
+    <p><a href="/compare/">See how it compares with other TV trackers &rarr;</a></p>
+    <h3 class="list-head">What Screen Night does</h3>
+    <ul class="feature-list">
+      <li><strong>Up Next, in air-date order.</strong> Every show you follow, sorted by when its next episode airs, with what you're in the middle of kept apart from what you mean to start.</li>
+      <li><strong>Catch up fast.</strong> Mark a whole season watched in one tap, or use Mark Watched Through Season X for a show you're partway through.</li>
+      <li><strong>Episode alerts.</strong> Optional alerts say when and where each new episode airs, at your local time, and let you mark it watched from the notification. They're scheduled on your iPhone.</li>
+      <li><strong>Friends you choose.</strong> Connect by invite link, or find each other when you both have the other's number saved. See what they're watching, how far along they are and what they loved. There are no public profiles, followers or comments.</li>
+      <li><strong>Simple ratings.</strong> Thumbs down, thumbs up or love it.</li>
+      <li><strong>Your year in TV.</strong> Episodes, shows and hours watched, and the networks and streamers behind them.</li>
+    </ul>
+    <p>Coming from TV Time? Screen Night doesn't import TV Time history. Add your shows and use Mark Watched Through Season X to set where you are.</p>
+    <p>Requires iOS 17 or later. 7-day free trial, then $1.99 a month or $12.99 a year, with everything included.</p>
     <figure class="frame frame-video">
       <video controls playsinline preload="none" poster="media/screen-night-launch.jpg" width="1920" height="1080">
         <source src="media/screen-night-launch.mp4" type="video/mp4">
@@ -451,7 +561,7 @@
       <div class="feature">
         <span class="feature-idx">01</span>
         <h3>One thing well</h3>
-        <p>No public profiles, no achievements, no algorithm deciding what to watch next &mdash; just a clear list of what's up next and what's done.</p>
+        <p>No public profiles and no achievements &mdash; just a clear list of what's up next and what's done.</p>
       </div>
       <div class="feature">
         <span class="feature-idx">02</span>
@@ -461,7 +571,7 @@
       <div class="feature">
         <span class="feature-idx">03</span>
         <h3>Private by design</h3>
-        <p>No analytics, no advertising, no tracking beyond what the app needs to run. Read our <a href="/privacy">privacy policy</a>.</p>
+        <p>No analytics, no advertising, no tracking beyond what the app needs to run. Read our <a href="/privacy/">privacy policy</a>.</p>
       </div>
     </div>
   </div>
@@ -491,8 +601,8 @@
   <div class="wrap">
     <span class="stamp">Red Rock Apps <span class="accent">LLC</span></span>
     <nav class="footer-links">
-      <a href="/privacy">Privacy</a>
-      <a href="/support">Support</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/support/">Support</a>
     </nav>
     <span class="stamp">&copy; 2026</span>
   </div>
