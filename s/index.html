@@ -9,7 +9,6 @@
 <meta property="og:description" content="Track it in Screen Night, and share what you're watching with friends.">
 <meta property="og:image" content="https://redrockappsllc.com/media/caught-up-icon-512.png">
 <meta property="og:site_name" content="Screen Night">
-<meta name="apple-itunes-app" content="app-id=6811716971">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -156,6 +155,8 @@
   .steps p { color: var(--ink-soft); margin: 12px 0 0; font-size: 0.98rem; }
   .open-app { display: inline-block; margin-top: 26px; color: var(--secondary); }
   .open-app[hidden] { display: none; }
+  .copy-note { margin: 12px 0 0; max-width: 32em; font-size: 0.95rem; color: var(--ink-soft); }
+  .copy-note[hidden] { display: none; }
   .poster { width: 96px; aspect-ratio: 2 / 3; border-radius: 8px; object-fit: cover; flex: none; background: var(--frame-bg); box-shadow: 0 2px 10px var(--shadow); }
   .meta { margin-top: 8px; color: var(--ink-soft); font-size: 0.98rem; }
   .credit { margin-top: 20px; font-size: 0.85rem; color: var(--ink-soft); }
@@ -185,11 +186,13 @@
       </div>
     </div>
     <p class="lede">Track it in Screen Night, and share what you're watching with friends.</p>
-    <a class="cta" href="https://apps.apple.com/app/apple-store/id6811716971?pt=129355858&amp;ct=rec&amp;mt=8">Get Screen Night on the App Store</a>
+    <a class="cta" id="get-app" href="https://apps.apple.com/app/apple-store/id6811716971?pt=129355858&amp;ct=rec&amp;mt=8">Get Screen Night on the App Store</a>
+    <p class="copy-note" id="copy-note" role="status" hidden>Tapping this also copies your friend's invite, so you can paste it into Screen Night.</p>
 
     <div class="steps">
       <span class="stamp">Then</span>
-      <p>Install Screen Night, then come back to this page and tap the link below. It waits while you sign up.</p>
+      <p id="step-paste" hidden>Install Screen Night and sign up, then tap Paste beside &ldquo;Invited by a friend?&rdquo; to connect. If Paste doesn&rsquo;t work, come back here and tap the link below.</p>
+      <p id="step-return">Install Screen Night, then come back to this page and tap the link below. It waits while you sign up.</p>
       <p id="connect-note" hidden>You can connect with your friend from there too.</p>
       <p>Already have Screen Night? Friends needs version 2.0 or later, so update it in the App Store first.</p>
     </div>
@@ -207,6 +210,28 @@
 </footer>
 
 <script>
+  // The App Store button also copies the invite, for "Invited by a friend?" at the top of the
+  // app's first screen after sign-up to paste: an install carries nothing through. Only when the
+  // browser can copy; otherwise the page stays as it was. The link is built from a code already
+  // checked, never location.href. The copy is the first thing the tap does, with nothing awaited
+  // before it (Safari allows a clipboard write only while it handles the tap itself), and the tap
+  // is never held up, so the App Store opens exactly as it always has.
+  function offerCopy(link, onFailure) {
+    var clipboard = navigator.clipboard;
+    if (!clipboard || typeof clipboard.writeText !== "function") return false;
+    document.getElementById("get-app").addEventListener("click", function () {
+      var writing;
+      try {
+        writing = clipboard.writeText(link);
+      } catch (error) {
+        onFailure();
+        return;
+      }
+      if (writing && typeof writing.then === "function") writing.then(null, onFailure);
+    });
+    return true;
+  }
+
   (function () {
     var params = new URLSearchParams(location.search);
     var id = params.get("id") || "";
@@ -219,7 +244,28 @@
     open.hidden = false;
     // Only a link from someone who has set up Friends carries their invite, and only then is there
     // anyone to connect with.
-    if (uuid.test(from)) document.getElementById("connect-note").hidden = false;
+    if (uuid.test(from)) {
+      // The friend's invite, not this page: the app takes only the invite from a paste, since a
+      // show has nowhere to open during sign-up. If the copy fails, the page goes back to saying
+      // what it always said.
+      var note = document.getElementById("copy-note");
+      var paste = document.getElementById("step-paste");
+      var back = document.getElementById("step-return");
+      var connect = document.getElementById("connect-note");
+      var offered = offerCopy("https://redrockappsllc.com/i/?c=" + from.toLowerCase(), function () {
+        note.hidden = true;
+        paste.hidden = true;
+        back.hidden = false;
+        connect.hidden = false;
+      });
+      if (offered) {
+        note.hidden = false;
+        paste.hidden = false;
+        back.hidden = true;
+      } else {
+        connect.hidden = false;
+      }
+    }
 
     // Text goes in with textContent, never innerHTML: the show's fields come from a third party.
     fetch("https://api.tvmaze.com/shows/" + id)

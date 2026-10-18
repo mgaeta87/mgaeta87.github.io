@@ -9,7 +9,6 @@
 <meta property="og:description" content="Share what you're watching, and see what your friends loved.">
 <meta property="og:image" content="https://redrockappsllc.com/media/caught-up-icon-512.png">
 <meta property="og:site_name" content="Screen Night">
-<meta name="apple-itunes-app" content="app-id=6811716971">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -156,6 +155,8 @@
   .steps p { color: var(--ink-soft); margin: 12px 0 0; font-size: 0.98rem; }
   .open-app { display: inline-block; margin-top: 26px; color: var(--secondary); }
   .open-app[hidden] { display: none; }
+  .copy-note { margin: 12px 0 0; max-width: 32em; font-size: 0.95rem; color: var(--ink-soft); }
+  .copy-note[hidden] { display: none; }
   .poster { width: 96px; aspect-ratio: 2 / 3; border-radius: 8px; object-fit: cover; flex: none; background: var(--frame-bg); box-shadow: 0 2px 10px var(--shadow); }
   .meta { margin-top: 8px; color: var(--ink-soft); font-size: 0.98rem; }
   .credit { margin-top: 20px; font-size: 0.85rem; color: var(--ink-soft); }
@@ -174,7 +175,9 @@
 <!-- An invite link: https://redrockappsllc.com/i/?c=<invite code>. With Screen Night installed, iOS
      opens the app instead of this page (applinks in /.well-known/apple-app-site-association). This
      page is for everyone else, and it can't say who sent the link: it's one static page for every
-     invite, and the message the link arrived in already names the sender. -->
+     invite, and the message the link arrived in already names the sender. Its App Store button
+     also copies the invite, for the app to paste after sign-up. There's no Smart App Banner: its
+     Get button would install without running this page's script, so nothing would be copied. -->
 <main>
   <div class="wrap">
     <span class="stamp">Screen Night &mdash; an invite</span>
@@ -183,13 +186,15 @@
       <h1>Join your friend on Screen Night</h1>
     </div>
     <p class="lede">Screen Night keeps track of every show you watch, episode by episode. Share what you're watching with friends, and see what they loved.</p>
-    <a class="cta" href="https://apps.apple.com/app/apple-store/id6811716971?pt=129355858&amp;ct=invite&amp;mt=8">Get Screen Night on the App Store</a>
+    <a class="cta" id="get-app" href="https://apps.apple.com/app/apple-store/id6811716971?pt=129355858&amp;ct=invite&amp;mt=8">Get Screen Night on the App Store</a>
+    <p class="copy-note" id="copy-note" role="status" hidden>Tapping this also copies your invite, so you can paste it into Screen Night.</p>
 
     <div class="steps">
       <span class="stamp">Then, to connect</span>
       <ol>
         <li>Install Screen Night.</li>
-        <li>Come back to this page and tap the link below. It waits while you sign up.</li>
+        <li id="step-paste" hidden>After you sign up, tap Paste beside &ldquo;Invited by a friend?&rdquo;. If Paste doesn&rsquo;t work, come back here and tap the link below.</li>
+        <li id="step-return">Come back to this page and tap the link below. It waits while you sign up.</li>
       </ol>
       <p>Or add your phone number in <strong>Friends</strong>: if you each have the other's number saved, you'll find each other there.</p>
       <p>Already have Screen Night? Friends needs version 2.0 or later, so update it in the App Store first.</p>
@@ -207,15 +212,50 @@
 </footer>
 
 <script>
+  // The App Store button also copies the invite, for "Invited by a friend?" at the top of the
+  // app's first screen after sign-up to paste: an install carries nothing through. Only when the
+  // browser can copy; otherwise the page stays as it was. The link is built from a code already
+  // checked, never location.href. The copy is the first thing the tap does, with nothing awaited
+  // before it (Safari allows a clipboard write only while it handles the tap itself), and the tap
+  // is never held up, so the App Store opens exactly as it always has.
+  function offerCopy(link, onFailure) {
+    var clipboard = navigator.clipboard;
+    if (!clipboard || typeof clipboard.writeText !== "function") return false;
+    document.getElementById("get-app").addEventListener("click", function () {
+      var writing;
+      try {
+        writing = clipboard.writeText(link);
+      } catch (error) {
+        onFailure();
+        return;
+      }
+      if (writing && typeof writing.then === "function") writing.then(null, onFailure);
+    });
+    return true;
+  }
+
   // "Open the invite" is for someone who has the app but landed here anyway (a link opened inside
   // another app's browser, say). It uses the app's own scheme, which the app treats exactly like
-  // the https link. Shown only for a well-formed code, so a mangled link offers nothing broken.
+  // the https link. Shown, and the invite offered for copying, only for a well-formed code, so a
+  // mangled link offers nothing broken.
   (function () {
     var code = new URLSearchParams(location.search).get("c") || "";
-    if (/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(code)) {
-      var link = document.getElementById("open-app");
-      link.href = "tvtracker://invite/" + code.toLowerCase();
-      link.hidden = false;
+    if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(code)) return;
+    code = code.toLowerCase();
+    var link = document.getElementById("open-app");
+    link.href = "tvtracker://invite/" + code;
+    link.hidden = false;
+
+    var note = document.getElementById("copy-note");
+    var offered = offerCopy("https://redrockappsllc.com/i/?c=" + code, function () {
+      note.textContent = "Couldn\u2019t copy your invite. Once Screen Night is installed, come back here and tap Open the invite.";
+      document.getElementById("step-paste").hidden = true;
+      document.getElementById("step-return").hidden = false;
+    });
+    if (offered) {
+      note.hidden = false;
+      document.getElementById("step-paste").hidden = false;
+      document.getElementById("step-return").hidden = true;
     }
   })();
 </script>
