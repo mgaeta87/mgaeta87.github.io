@@ -71,9 +71,13 @@
     background: var(--bg);
     color: var(--ink);
     font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
-    font-size: 17px;
+    /* rem, not px, so the reader's own text-size setting still scales the page */
+    font-size: 1.0625rem;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    font-optical-sizing: auto;
+    /* no 300ms double-tap-zoom delay on the tap path */
+    touch-action: manipulation;
   }
 
   .wrap {
@@ -106,7 +110,7 @@
   header.hero h1 {
     font-size: clamp(2.3rem, 5.2vw, 3.4rem);
     line-height: 1.04;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.022em;
   }
   header.hero .lede {
     margin-top: 22px;
@@ -227,10 +231,29 @@
   footer .stamp .accent { color: var(--accent); }
   footer a { text-decoration: none; }
 
-  /* ---------- Site nav ---------- */
-  nav.sitenav { border-bottom: 1px solid var(--rule); }
+  /* ---------- Site nav: translucent chrome, content scrolls under ---------- */
+  nav.sitenav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: color-mix(in srgb, var(--bg) 72%, transparent);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+  }
+  /* Scroll edge, not a hard rule: separation appears only where chrome overlaps content */
+  nav.sitenav::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    height: 14px;
+    background: linear-gradient(to bottom, color-mix(in srgb, var(--bg) 65%, transparent), transparent);
+    pointer-events: none;
+  }
   nav.sitenav .wrap { display: flex; gap: 28px; padding: 16px 28px; }
   nav.sitenav a {
+    position: relative;
     font-family: "Space Mono", monospace;
     font-size: 12.5px;
     letter-spacing: 0.1em;
@@ -240,8 +263,49 @@
     padding-bottom: 4px;
     border-bottom: 2px solid transparent;
   }
+  /* Invisible hit padding: ~45px touch target without changing the visual box */
+  nav.sitenav a::before { content: ""; position: absolute; inset: -14px -8px; }
   nav.sitenav a:hover { color: var(--ink); }
   nav.sitenav a.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* ---------- Press feedback: instant, on press, not on release ---------- */
+  a.badge, nav.sitenav a, .footer-links a, .contact-item a {
+    -webkit-tap-highlight-color: transparent;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    a.badge, nav.sitenav a, .footer-links a, .contact-item a {
+      transition: transform 100ms ease-out, color 100ms ease-out, border-color 150ms ease, background 150ms ease;
+    }
+    a.badge:active, nav.sitenav a:active, .footer-links a:active, .contact-item a:active {
+      transform: scale(0.97);
+    }
+  }
+  .footer-links a { position: relative; }
+  .footer-links a::before { content: ""; position: absolute; inset: -14px -8px; }
+
+  /* ---------- Size-specific tracking: tighten as type grows, body stays at 0 ---------- */
+  h2 { letter-spacing: -0.012em; }
+  h3 { letter-spacing: -0.006em; }
+
+  /* ---------- Transparency and contrast preferences ---------- */
+  @media (prefers-reduced-transparency: reduce) {
+    nav.sitenav {
+      background: var(--bg);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      border-bottom: 1px solid var(--rule);
+    }
+    nav.sitenav::after { display: none; }
+  }
+  @media (prefers-contrast: more) {
+    nav.sitenav {
+      background: var(--bg);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      border-bottom: 1px solid var(--ink);
+    }
+    nav.sitenav::after { display: none; }
+  }
   @media (max-width: 420px) { nav.sitenav .wrap { gap: 16px; padding: 16px 20px; flex-wrap: wrap; } }
 </style>
 <body>
