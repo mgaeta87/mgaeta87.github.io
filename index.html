@@ -217,6 +217,8 @@
 
   /* ---------- Feature rows ---------- */
   .feature { padding: 84px 0; }
+  /* clear the sticky nav when the #features / #pricing links jump here */
+  #features, #pricing { scroll-margin-top: 84px; }
   .feature-grid { display: flex; flex-wrap: wrap; gap: 60px; align-items: center; }
   .feature-grid.flip { flex-wrap: wrap-reverse; }
   .feature-copy { flex: 999 1 400px; min-width: 0; }

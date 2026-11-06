@@ -19,7 +19,6 @@
     --sand-50: #f6f2e9;
     --sienna: #b8451f;
     --sienna-dim: #9a3a19;
-    --dusk: #47606c;
 
     --bg: var(--sand-50);
     --bg-raised: var(--sand-100);
@@ -27,11 +26,9 @@
     --ink-soft: var(--rock-600);
     --accent: var(--sienna);
     --accent-strong: var(--sienna-dim);
-    --secondary: var(--dusk);
-    --rule: color-mix(in srgb, var(--rock-950) 16%, transparent);
-    --rule-strong: color-mix(in srgb, var(--rock-950) 30%, transparent);
-    --frame-bg: var(--sand-100);
-    --shadow: color-mix(in srgb, var(--rock-950) 10%, transparent);
+    --on-accent: #ffffff;
+    --rule: color-mix(in srgb, var(--rock-950) 14%, transparent);
+    --rule-strong: color-mix(in srgb, var(--rock-950) 28%, transparent);
   }
 
   @media (prefers-color-scheme: dark) {
@@ -42,11 +39,9 @@
       --ink-soft: color-mix(in srgb, var(--sand-50) 62%, var(--rock-950));
       --accent: #d8672f;
       --accent-strong: #e2814f;
-      --secondary: #8fb2c2;
-      --rule: color-mix(in srgb, var(--sand-50) 18%, transparent);
-      --rule-strong: color-mix(in srgb, var(--sand-50) 32%, transparent);
-      --frame-bg: var(--rock-800);
-      --shadow: color-mix(in srgb, black 40%, transparent);
+      --on-accent: #17130f;
+      --rule: color-mix(in srgb, var(--sand-50) 16%, transparent);
+      --rule-strong: color-mix(in srgb, var(--sand-50) 30%, transparent);
     }
   }
 
@@ -57,11 +52,9 @@
     --ink-soft: color-mix(in srgb, var(--sand-50) 62%, var(--rock-950));
     --accent: #d8672f;
     --accent-strong: #e2814f;
-    --secondary: #8fb2c2;
-    --rule: color-mix(in srgb, var(--sand-50) 18%, transparent);
-    --rule-strong: color-mix(in srgb, var(--sand-50) 32%, transparent);
-    --frame-bg: var(--rock-800);
-    --shadow: color-mix(in srgb, black 40%, transparent);
+    --on-accent: #17130f;
+    --rule: color-mix(in srgb, var(--sand-50) 16%, transparent);
+    --rule-strong: color-mix(in srgb, var(--sand-50) 30%, transparent);
   }
 
   * { box-sizing: border-box; }
@@ -71,27 +64,11 @@
     background: var(--bg);
     color: var(--ink);
     font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
-    /* rem, not px, so the reader's own text-size setting still scales the page */
     font-size: 1.0625rem;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     font-optical-sizing: auto;
-    /* no 300ms double-tap-zoom delay on the tap path */
     touch-action: manipulation;
-  }
-
-  .wrap {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 0 28px;
-  }
-
-  .stamp {
-    font-family: "Space Mono", monospace;
-    font-size: 12.5px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
   }
 
   h1, h2, h3 {
@@ -100,129 +77,154 @@
     text-wrap: balance;
     margin: 0;
   }
+  h1 { letter-spacing: -0.024em; }
+  h2 { letter-spacing: -0.015em; }
+  h3 { letter-spacing: -0.008em; }
 
-  /* ---------- Hero ---------- */
-  header.hero {
-    padding: 72px 0 52px;
-    border-bottom: 1px solid var(--rule);
-  }
-  header.hero .stamp { display: block; margin-bottom: 22px; }
-  header.hero h1 {
-    font-size: clamp(2.3rem, 5.2vw, 3.4rem);
-    line-height: 1.04;
-    letter-spacing: -0.022em;
-  }
-  header.hero .lede {
-    margin-top: 22px;
-    max-width: 34em;
-    font-size: 1.15rem;
-    line-height: 1.55;
-    color: var(--ink-soft);
-  }
-  .underline {
-    margin-top: 30px;
-    height: 3px;
-    width: 84px;
-    background: var(--accent);
-  }
-  .effective {
-    margin-top: 26px;
-    font-family: "Space Mono", monospace;
-    font-size: 12.5px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-  }
-
-  /* ---------- Sections ---------- */
-  section {
-    padding: 48px 0;
-    border-bottom: 1px solid var(--rule);
-  }
-  section:last-of-type { border-bottom: none; }
-
-  .section-head {
-    display: flex;
-    align-items: baseline;
-    gap: 16px;
-    margin-bottom: 24px;
-  }
-  .section-head .stamp { white-space: nowrap; }
-  .section-head .rule-fill {
-    flex: 1;
-    height: 1px;
-    background: var(--rule-strong);
-  }
-
-  section h2 {
-    font-size: 1.6rem;
-    margin-bottom: 16px;
-  }
-  section h3 {
-    font-size: 1.12rem;
-    margin-top: 26px;
-    margin-bottom: 8px;
-  }
-
-  section p, section li {
-    max-width: 40em;
-    color: var(--ink-soft);
-    font-size: 1.04rem;
-  }
-  section p + p { margin-top: 14px; }
-
-  ul { padding-left: 20px; margin: 12px 0; }
-  li + li { margin-top: 9px; }
-  li strong, p strong { color: var(--ink); font-weight: 600; }
-
+  p { margin: 0; }
   a { color: var(--accent); }
   a:hover { color: var(--accent-strong); }
   a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
-  /* ---------- Data table ---------- */
-  .table-scroll { overflow-x: auto; margin-top: 18px; max-width: 40em; }
-  table { border-collapse: collapse; width: 100%; font-size: 0.97rem; }
-  th, td {
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+  .wrap-narrow { max-width: 680px; margin: 0 auto; padding: 0 28px; }
+
+  /* ---------- Site nav ---------- */
+  nav.site {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: color-mix(in srgb, var(--bg) 72%, transparent);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+  }
+  nav.site::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; top: 100%;
+    height: 14px;
+    background: linear-gradient(to bottom, color-mix(in srgb, var(--bg) 65%, transparent), transparent);
+    pointer-events: none;
+  }
+  nav.site .wrap { display: flex; align-items: center; gap: 26px; padding-top: 14px; padding-bottom: 14px; }
+  .brand {
+    display: flex; align-items: center; gap: 10px;
+    font-family: "Zilla Slab", Georgia, serif; font-weight: 700; font-size: 1.05rem;
+    color: var(--ink); text-decoration: none; letter-spacing: -0.01em;
+  }
+  .brand img { width: 26px; height: 26px; border-radius: 7px; display: block; }
+  nav.site .links { margin-left: auto; display: flex; align-items: center; gap: 24px; }
+  nav.site .links a {
+    position: relative;
+    font-size: 0.92rem; font-weight: 500; color: var(--ink-soft); text-decoration: none;
+  }
+  nav.site .links a:hover { color: var(--ink); }
+  nav.site .links a::before { content: ""; position: absolute; inset: -14px -8px; }
+  .nav-cta {
+    background: var(--accent); color: var(--on-accent) !important;
+    padding: 9px 17px; border-radius: 8px; font-weight: 600; font-size: 0.9rem !important;
+  }
+  .nav-cta:hover { background: var(--accent-strong); color: var(--on-accent) !important; }
+  @media (max-width: 760px) { nav.site .links a.hide-sm { display: none; } }
+
+  .brand, nav.site .links a, .foot-col a { -webkit-tap-highlight-color: transparent; }
+  @media (prefers-reduced-motion: no-preference) {
+    .brand, nav.site .links a, .foot-col a {
+      transition: transform 100ms ease-out, color 100ms ease-out, background 150ms ease;
+    }
+    .brand:active, nav.site .links a:active, .foot-col a:active { transform: scale(0.97); }
+  }
+
+  /* ---------- Page ---------- */
+  .page-head { padding: 78px 0 10px; }
+  .page-head h1 { font-size: clamp(2.2rem, 4vw, 3rem); line-height: 1.05; }
+  .page-head .lede { margin-top: 20px; font-size: 1.12rem; line-height: 1.55; color: var(--ink-soft); }
+  .page-head .effective {
+    margin-top: 22px; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--ink-soft); font-weight: 600;
+  }
+
+  /* a legal section: its NAME as a micro-label, its summary as the heading */
+  /* scroll-margin clears the sticky nav when a #clause link jumps here */
+  section { padding: 46px 0 0; scroll-margin-top: 84px; }
+  section:last-of-type { padding-bottom: 92px; }
+  .sec-label {
+    font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--accent); font-weight: 600; margin-bottom: 10px;
+  }
+  section h2 { font-size: 1.5rem; }
+  section h3 { font-size: 1.12rem; margin-top: 30px; }
+  section h2 + p, section h3 + p { margin-top: 14px; }
+  section p + p, section p + ul, section ul + p { margin-top: 16px; }
+  section p, section li { color: var(--ink-soft); }
+  section li strong, section p strong { color: var(--ink); font-weight: 600; }
+  section ul { margin: 16px 0 0; padding-left: 20px; }
+  section li + li { margin-top: 10px; }
+
+  /* ---------- Tables: text keeps the narrow measure, these break out ---------- */
+  .table-scroll {
+    margin: 22px -28px 0;
+    padding: 0 28px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+  .table-scroll table {
+    border-collapse: collapse;
+    min-width: 640px;
+    width: 100%;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .table-scroll th, .table-scroll td {
     text-align: left;
-    padding: 11px 14px 11px 0;
+    vertical-align: top;
+    padding: 13px 15px;
     border-bottom: 1px solid var(--rule);
     color: var(--ink-soft);
-    vertical-align: top;
   }
-  th {
-    font-family: "Space Mono", monospace;
-    font-size: 11.5px;
-    letter-spacing: 0.06em;
+  .table-scroll thead th {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--accent);
-    white-space: nowrap;
-  }
-  td:first-child { color: var(--ink); font-weight: 500; white-space: nowrap; padding-right: 24px; }
-
-  /* ---------- Contact ---------- */
-  .contact-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    margin-top: 24px;
-  }
-  .contact-item .stamp { display: block; margin-bottom: 8px; }
-  .contact-item a, .contact-item span.value {
-    font-family: "Zilla Slab", Georgia, serif;
-    font-size: 1.25rem;
     color: var(--ink);
-    text-decoration: none;
     border-bottom: 1px solid var(--rule-strong);
-    padding-bottom: 2px;
+    padding-bottom: 11px;
   }
-  .contact-item a:hover { border-bottom-color: var(--accent); color: var(--accent); }
-  .contact-item a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+  .table-scroll tbody td:first-child {
+    color: var(--ink);
+    font-weight: 600;
+    width: 13em;
+  }
+
+  .contact-row { display: flex; flex-wrap: wrap; gap: 38px; margin-top: 24px; }
+  .contact-item .label {
+    display: block; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--accent); font-weight: 600; margin-bottom: 7px;
+  }
+  .contact-item a, .contact-item span.value {
+    font-family: "Zilla Slab", Georgia, serif; font-size: 1.2rem; color: var(--ink);
+    text-decoration: none; border-bottom: 1px solid var(--rule-strong); padding-bottom: 2px;
+  }
+  .contact-item a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  .contact-item a { -webkit-tap-highlight-color: transparent; }
+  @media (prefers-reduced-motion: no-preference) {
+    .contact-item a { transition: transform 100ms ease-out, color 100ms ease-out; }
+    .contact-item a:active { transform: scale(0.97); }
+  }
+
+  @media (max-width: 620px) {
+    .page-head { padding-top: 54px; }
+    .table-scroll { margin-left: -20px; margin-right: -20px; padding: 0 20px; }
+    .table-scroll tbody td:first-child { width: 8em; }
+  }
 
   /* ---------- Footer ---------- */
-  footer { background: var(--rock-950); color: var(--sand-50); padding: 58px 0 38px; margin-top: 40px; }
+  footer { background: var(--rock-950); color: var(--sand-50); padding: 58px 0 38px; }
   footer a { color: rgba(246,242,233,0.68); text-decoration: none; }
   footer a:hover { color: #d8672f; }
-  footer .wrap { display: block; }
   .foot-grid { display: flex; flex-wrap: wrap; gap: 36px; }
   .foot-about { flex: 1.6 1 280px; min-width: 0; }
   .foot-brand { display: flex; align-items: center; gap: 10px; font-family: "Zilla Slab", Georgia, serif; font-weight: 700; color: var(--sand-50); }
@@ -243,65 +245,6 @@
     font-size: 0.86rem; color: rgba(246,242,233,0.45);
   }
 
-  /* ---------- Site nav: translucent chrome, content scrolls under ---------- */
-  nav.site {
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    background: color-mix(in srgb, var(--bg) 72%, transparent);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-  }
-  /* scroll edge, not a hard rule: separation only where chrome overlaps content */
-  nav.site::after {
-    content: "";
-    position: absolute;
-    left: 0; right: 0; top: 100%;
-    height: 14px;
-    background: linear-gradient(to bottom, color-mix(in srgb, var(--bg) 65%, transparent), transparent);
-    pointer-events: none;
-  }
-  nav.site .wrap { display: flex; align-items: center; gap: 26px; padding: 14px 28px; }
-  .brand {
-    display: flex; align-items: center; gap: 10px;
-    font-family: "Zilla Slab", Georgia, serif; font-weight: 700; font-size: 1.05rem;
-    color: var(--ink); text-decoration: none; letter-spacing: -0.01em;
-  }
-  .brand img { width: 26px; height: 26px; border-radius: 7px; display: block; }
-  nav.site .links { margin-left: auto; display: flex; align-items: center; gap: 24px; }
-  nav.site .links a {
-    position: relative;
-    font-size: 0.92rem; font-weight: 500; color: var(--ink-soft); text-decoration: none;
-  }
-  nav.site .links a:hover { color: var(--ink); }
-  nav.site .links a[aria-current="page"] { color: var(--accent); }
-  /* invisible hit padding: ~44px touch target without changing the visual box */
-  nav.site .links a::before { content: ""; position: absolute; inset: -14px -8px; }
-  .nav-cta {
-    background: var(--accent); color: var(--on-accent) !important;
-    padding: 9px 17px; border-radius: 8px; font-weight: 600; font-size: 0.9rem !important;
-  }
-  .nav-cta:hover { background: var(--accent-strong); color: var(--on-accent) !important; }
-  @media (max-width: 760px) { nav.site .links a.hide-sm { display: none; } }
-
-  /* ---------- Press feedback: instant, on press, not on release ---------- */
-  a.badge, nav.site .links a, .brand, .foot-col a, .contact-item a {
-    -webkit-tap-highlight-color: transparent;
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    a.badge, nav.site .links a, .brand, .foot-col a, .contact-item a {
-      transition: transform 100ms ease-out, color 100ms ease-out, border-color 150ms ease, background 150ms ease;
-    }
-    a.badge:active, nav.site .links a:active, .brand:active, .foot-col a:active, .contact-item a:active {
-      transform: scale(0.97);
-    }
-  }
-
-  /* ---------- Size-specific tracking: tighten as type grows, body stays at 0 ---------- */
-  h2 { letter-spacing: -0.012em; }
-  h3 { letter-spacing: -0.006em; }
-
-  /* ---------- Transparency and contrast preferences ---------- */
   @media (prefers-reduced-transparency: reduce) {
     nav.site {
       background: var(--bg);
@@ -320,7 +263,6 @@
     }
     nav.site::after { display: none; }
   }
-  @media (max-width: 420px) { nav.site .wrap { gap: 14px; padding: 14px 20px; } }
 </style>
 </head>
 <body>
@@ -338,22 +280,19 @@
   </div>
 </nav>
 
-<header class="hero">
-  <div class="wrap">
-    <span class="stamp">Screen Night &mdash; iOS</span>
+<header class="page-head">
+  <div class="wrap-narrow">
     <h1>Privacy Policy</h1>
     <p class="lede">Screen Night keeps track of what you watch. To do that across your devices it stores a small amount of data about you &mdash; and nothing beyond that. This page says exactly what, where it goes, and how to get rid of it.</p>
-    <div class="underline"></div>
     <p class="effective">Effective 25 October 2026</p>
   </div>
 </header>
 
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="stamp">01 &mdash; The short version</span>
-      <div class="rule-fill"></div>
-    </div>
+<main>
+
+<section id="the-short-version">
+  <div class="wrap-narrow">
+    <p class="sec-label">01 &mdash; The short version</p>
     <h2>No analytics, no advertising, no tracking.</h2>
     <p>Screen Night contains no analytics service, no advertising SDK, no crash-reporting service, and no third-party tracking of any kind. It does not use the device advertising identifier (IDFA) and never asks to track you across other apps or websites. It does not collect your location. If you use Friends, it checks your contacts for people you know without keeping your address book &mdash; see &ldquo;Friends&rdquo; below.</p>
     <p>We do not sell or rent your personal data, and we share it with no one you haven&rsquo;t chosen to share it with. There is no advertising in the app, so there is no one to sell it to.</p>
@@ -361,12 +300,9 @@
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="stamp">02 &mdash; What we collect</span>
-      <div class="rule-fill"></div>
-    </div>
+<section id="what-we-collect">
+  <div class="wrap-narrow">
+    <p class="sec-label">02 &mdash; What we collect</p>
     <h2>Your account, and what you're watching.</h2>
 
     <h3>Account information</h3>
@@ -374,7 +310,9 @@
 
     <h3>What you track</h3>
     <p>When you add a show, mark an episode watched, or rate something, we store that so it survives a reinstall and follows you to another device. It is information about the shows and when you did something &mdash; never free text, notes, or anything you write:</p>
-    <div class="table-scroll">
+    </div>
+    <div class="wrap">
+      <div class="table-scroll">
       <table>
         <thead>
           <tr><th>Stored</th><th>What it contains</th></tr>
@@ -386,6 +324,8 @@
         </tbody>
       </table>
     </div>
+    </div>
+    <div class="wrap-narrow">
     <p>Genre labels are stored alongside your ratings and watch history so the app can suggest shows without having to look every title up again. They describe the show, not you.</p>
     <p>Each record also notes when it last changed, so your devices can sync just what&rsquo;s new. When you remove a show, unmark an episode or clear a rating, the record is kept marked as removed rather than erased, so your other devices remove it too. All of it goes when you delete your account.</p>
 
@@ -397,7 +337,9 @@
 
     <h3>Friends</h3>
     <p>Friends is optional; none of this is collected unless you set it up. When you do:</p>
-    <div class="table-scroll">
+    </div>
+    <div class="wrap">
+      <div class="table-scroll">
       <table>
         <thead>
           <tr><th>Stored</th><th>What it contains</th></tr>
@@ -413,6 +355,8 @@
         </tbody>
       </table>
     </div>
+    </div>
+    <div class="wrap-narrow">
     <p><strong>What friends see.</strong> The people you connect with see your name and avatar, the shows you&rsquo;re watching and how far along you are, the shows you&rsquo;ve finished, and the shows you loved or liked &mdash; with the day you last watched or rated each one, and how many episodes you&rsquo;ve watched, in all and recently. They never see your email address, your phone number, your watch list, or the shows you didn&rsquo;t like. Your name and avatar are also shown to anyone who opens your invite link or a show you recommend from Screen Night (a recommendation carries your invite, so it works as one), and, if you&rsquo;re findable, to people whose number you have and who have yours. Anyone who opens one of those links in Screen Night can connect with you straight away; if one ends up somewhere you didn&rsquo;t mean it to, choose Replace Invite Link in Friends Settings and the old links stop working. You can hide any show, pause sharing, remove a friend, or stop being findable at any time.</p>
     <p><strong>Invite pages.</strong> On the page a friend&rsquo;s invite or recommendation link opens, the App Store button also copies your friend&rsquo;s invite link to your clipboard. In Screen Night, the Paste button beside &ldquo;Invited by a friend?&rdquo; reads your clipboard only when you tap it, and the app uses nothing from it but that invite link.</p>
     <p>To prevent abuse, we briefly record when some Friends actions were used, such as contact checks and reports, and delete those records after a day, apart from the time of your most recent contact check, described above.</p>
@@ -425,12 +369,9 @@
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="stamp">03 &mdash; Where it goes</span>
-      <div class="rule-fill"></div>
-    </div>
+<section id="where-it-goes">
+  <div class="wrap-narrow">
+    <p class="sec-label">03 &mdash; Where it goes</p>
     <h2>The services involved, and what each one sees.</h2>
     <p>Screen Night is a small app and relies on a small number of outside services. Each one receives only what it needs to do its job:</p>
     <ul>
@@ -447,12 +388,9 @@
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="stamp">04 &mdash; Your choices</span>
-      <div class="rule-fill"></div>
-    </div>
+<section id="your-choices">
+  <div class="wrap-narrow">
+    <p class="sec-label">04 &mdash; Your choices</p>
     <h2>Getting your data, or getting rid of it.</h2>
     <p>You can delete your account at any time from inside the app &mdash; Settings &rarr; Delete Account. If your subscription has lapsed and you're seeing the subscribe screen instead, Delete Account is on that screen too, so deleting never requires paying first. Deletion removes your account record along with your watchlist, watched episodes, ratings, and everything Friends stored about you, and it can't be undone. If you'd rather not use the app to do it, email <a href="mailto:mike@redrockappsllc.com">mike@redrockappsllc.com</a> from the address on the account and we'll delete it for you.</p>
     <p>Within Friends you can change your name, remove your phone number, stop being findable, pause sharing, hide a show, remove a friend, or block someone at any time, from the Friends tab.</p>
@@ -461,62 +399,52 @@
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="stamp">05 &mdash; Retention</span>
-      <div class="rule-fill"></div>
-    </div>
+<section id="retention">
+  <div class="wrap-narrow">
+    <p class="sec-label">05 &mdash; Retention</p>
     <h2>We keep it while you use the app.</h2>
     <p>Your account and tracking data are kept for as long as your account exists. When an account is deleted, the associated records are removed at the same time. One exception, for honesty's sake: if you redeemed a promo code, the record that the code was used outlives the account &mdash; but it is stripped of any link to you, so what remains identifies a spent code and nothing about a person. Feedback and reports also reach us by email, and those emails stay in our inbox after an account is deleted. To recover from mistakes, we keep a nightly backup copy of the database for 30 days, on encrypted storage we control in the United States; backups are used only to restore data, never for anything else. A deleted account is therefore gone from every backup within 30 days.</p>
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="stamp">06 &mdash; Children</span>
-      <div class="rule-fill"></div>
-    </div>
+<section id="children">
+  <div class="wrap-narrow">
+    <p class="sec-label">06 &mdash; Children</p>
     <h2>Not directed to children.</h2>
     <p>Screen Night is not intended for children under 13, and we do not knowingly collect personal information from them. If you believe a child has given us their information, write to us and we will delete it.</p>
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="stamp">07 &mdash; Changes</span>
-      <div class="rule-fill"></div>
-    </div>
+<section id="changes">
+  <div class="wrap-narrow">
+    <p class="sec-label">07 &mdash; Changes</p>
     <h2>If this changes, it changes here.</h2>
     <p>When this policy is updated, the effective date at the top of the page changes with it. If a change materially affects how your information is handled, we will say so in the app rather than relying on you to check.</p>
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="stamp">08 &mdash; Contact</span>
-      <div class="rule-fill"></div>
-    </div>
+<section id="contact">
+  <div class="wrap-narrow">
+    <p class="sec-label">08 &mdash; Contact</p>
     <h2>Questions about any of this.</h2>
     <div class="contact-row">
       <div class="contact-item">
-        <span class="stamp">Email</span>
+        <span class="label">Email</span>
         <a href="mailto:mike@redrockappsllc.com">mike@redrockappsllc.com</a>
       </div>
       <div class="contact-item">
-        <span class="stamp">Controller</span>
+        <span class="label">Controller</span>
         <span class="value">Red Rock Apps LLC</span>
       </div>
       <div class="contact-item">
-        <span class="stamp">Based in</span>
+        <span class="label">Based in</span>
         <span class="value">Rocky Mountain foothills, CO</span>
       </div>
     </div>
   </div>
 </section>
+
+</main>
 
 <footer>
   <div class="wrap">

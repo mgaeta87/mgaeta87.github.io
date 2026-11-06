@@ -19,7 +19,6 @@
     --sand-50: #f6f2e9;
     --sienna: #b8451f;
     --sienna-dim: #9a3a19;
-    --dusk: #47606c;
 
     --bg: var(--sand-50);
     --bg-raised: var(--sand-100);
@@ -27,11 +26,9 @@
     --ink-soft: var(--rock-600);
     --accent: var(--sienna);
     --accent-strong: var(--sienna-dim);
-    --secondary: var(--dusk);
-    --rule: color-mix(in srgb, var(--rock-950) 16%, transparent);
-    --rule-strong: color-mix(in srgb, var(--rock-950) 30%, transparent);
-    --frame-bg: var(--sand-100);
-    --shadow: color-mix(in srgb, var(--rock-950) 10%, transparent);
+    --on-accent: #ffffff;
+    --rule: color-mix(in srgb, var(--rock-950) 14%, transparent);
+    --rule-strong: color-mix(in srgb, var(--rock-950) 28%, transparent);
   }
 
   @media (prefers-color-scheme: dark) {
@@ -42,11 +39,9 @@
       --ink-soft: color-mix(in srgb, var(--sand-50) 62%, var(--rock-950));
       --accent: #d8672f;
       --accent-strong: #e2814f;
-      --secondary: #8fb2c2;
-      --rule: color-mix(in srgb, var(--sand-50) 18%, transparent);
-      --rule-strong: color-mix(in srgb, var(--sand-50) 32%, transparent);
-      --frame-bg: var(--rock-800);
-      --shadow: color-mix(in srgb, black 40%, transparent);
+      --on-accent: #17130f;
+      --rule: color-mix(in srgb, var(--sand-50) 16%, transparent);
+      --rule-strong: color-mix(in srgb, var(--sand-50) 30%, transparent);
     }
   }
 
@@ -57,11 +52,9 @@
     --ink-soft: color-mix(in srgb, var(--sand-50) 62%, var(--rock-950));
     --accent: #d8672f;
     --accent-strong: #e2814f;
-    --secondary: #8fb2c2;
-    --rule: color-mix(in srgb, var(--sand-50) 18%, transparent);
-    --rule-strong: color-mix(in srgb, var(--sand-50) 32%, transparent);
-    --frame-bg: var(--rock-800);
-    --shadow: color-mix(in srgb, black 40%, transparent);
+    --on-accent: #17130f;
+    --rule: color-mix(in srgb, var(--sand-50) 16%, transparent);
+    --rule-strong: color-mix(in srgb, var(--sand-50) 30%, transparent);
   }
 
   * { box-sizing: border-box; }
@@ -71,27 +64,11 @@
     background: var(--bg);
     color: var(--ink);
     font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
-    /* rem, not px, so the reader's own text-size setting still scales the page */
     font-size: 1.0625rem;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     font-optical-sizing: auto;
-    /* no 300ms double-tap-zoom delay on the tap path */
     touch-action: manipulation;
-  }
-
-  .wrap {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 0 28px;
-  }
-
-  .stamp {
-    font-family: "Space Mono", monospace;
-    font-size: 12.5px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
   }
 
   h1, h2, h3 {
@@ -100,129 +77,117 @@
     text-wrap: balance;
     margin: 0;
   }
+  h1 { letter-spacing: -0.024em; }
+  h2 { letter-spacing: -0.015em; }
+  h3 { letter-spacing: -0.008em; }
 
-  /* ---------- Hero ---------- */
-  header.hero {
-    padding: 72px 0 52px;
-    border-bottom: 1px solid var(--rule);
-  }
-  header.hero .stamp { display: block; margin-bottom: 22px; }
-  header.hero h1 {
-    font-size: clamp(2.3rem, 5.2vw, 3.4rem);
-    line-height: 1.04;
-    letter-spacing: -0.022em;
-  }
-  header.hero .lede {
-    margin-top: 22px;
-    max-width: 34em;
-    font-size: 1.15rem;
-    line-height: 1.55;
-    color: var(--ink-soft);
-  }
-  .underline {
-    margin-top: 30px;
-    height: 3px;
-    width: 84px;
-    background: var(--accent);
-  }
-  .effective {
-    margin-top: 26px;
-    font-family: "Space Mono", monospace;
-    font-size: 12.5px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-  }
-
-  /* ---------- Sections ---------- */
-  section {
-    padding: 48px 0;
-    border-bottom: 1px solid var(--rule);
-  }
-  section:last-of-type { border-bottom: none; }
-
-  .section-head {
-    display: flex;
-    align-items: baseline;
-    gap: 16px;
-    margin-bottom: 24px;
-  }
-  .section-head .stamp { white-space: nowrap; }
-  .section-head .rule-fill {
-    flex: 1;
-    height: 1px;
-    background: var(--rule-strong);
-  }
-
-  section h2 {
-    font-size: 1.6rem;
-    margin-bottom: 16px;
-  }
-  section h3 {
-    font-size: 1.12rem;
-    margin-top: 26px;
-    margin-bottom: 8px;
-  }
-
-  section p, section li {
-    max-width: 40em;
-    color: var(--ink-soft);
-    font-size: 1.04rem;
-  }
-  section p + p { margin-top: 14px; }
-
-  ul { padding-left: 20px; margin: 12px 0; }
-  li + li { margin-top: 9px; }
-  li strong, p strong { color: var(--ink); font-weight: 600; }
-
+  p { margin: 0; }
   a { color: var(--accent); }
   a:hover { color: var(--accent-strong); }
   a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
-  /* ---------- Data table ---------- */
-  .table-scroll { overflow-x: auto; margin-top: 18px; max-width: 40em; }
-  table { border-collapse: collapse; width: 100%; font-size: 0.97rem; }
-  th, td {
-    text-align: left;
-    padding: 11px 14px 11px 0;
-    border-bottom: 1px solid var(--rule);
-    color: var(--ink-soft);
-    vertical-align: top;
-  }
-  th {
-    font-family: "Space Mono", monospace;
-    font-size: 11.5px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--accent);
-    white-space: nowrap;
-  }
-  td:first-child { color: var(--ink); font-weight: 500; white-space: nowrap; padding-right: 24px; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+  .wrap-narrow { max-width: 680px; margin: 0 auto; padding: 0 28px; }
 
-  /* ---------- Contact ---------- */
-  .contact-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    margin-top: 24px;
+  /* ---------- Site nav ---------- */
+  nav.site {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: color-mix(in srgb, var(--bg) 72%, transparent);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
   }
-  .contact-item .stamp { display: block; margin-bottom: 8px; }
+  nav.site::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; top: 100%;
+    height: 14px;
+    background: linear-gradient(to bottom, color-mix(in srgb, var(--bg) 65%, transparent), transparent);
+    pointer-events: none;
+  }
+  nav.site .wrap { display: flex; align-items: center; gap: 26px; padding-top: 14px; padding-bottom: 14px; }
+  .brand {
+    display: flex; align-items: center; gap: 10px;
+    font-family: "Zilla Slab", Georgia, serif; font-weight: 700; font-size: 1.05rem;
+    color: var(--ink); text-decoration: none; letter-spacing: -0.01em;
+  }
+  .brand img { width: 26px; height: 26px; border-radius: 7px; display: block; }
+  nav.site .links { margin-left: auto; display: flex; align-items: center; gap: 24px; }
+  nav.site .links a {
+    position: relative;
+    font-size: 0.92rem; font-weight: 500; color: var(--ink-soft); text-decoration: none;
+  }
+  nav.site .links a:hover { color: var(--ink); }
+  nav.site .links a::before { content: ""; position: absolute; inset: -14px -8px; }
+  .nav-cta {
+    background: var(--accent); color: var(--on-accent) !important;
+    padding: 9px 17px; border-radius: 8px; font-weight: 600; font-size: 0.9rem !important;
+  }
+  .nav-cta:hover { background: var(--accent-strong); color: var(--on-accent) !important; }
+  @media (max-width: 760px) { nav.site .links a.hide-sm { display: none; } }
+
+  .brand, nav.site .links a, .foot-col a { -webkit-tap-highlight-color: transparent; }
+  @media (prefers-reduced-motion: no-preference) {
+    .brand, nav.site .links a, .foot-col a {
+      transition: transform 100ms ease-out, color 100ms ease-out, background 150ms ease;
+    }
+    .brand:active, nav.site .links a:active, .foot-col a:active { transform: scale(0.97); }
+  }
+
+  /* ---------- Page ---------- */
+  .page-head { padding: 78px 0 10px; }
+  .page-head h1 { font-size: clamp(2.2rem, 4vw, 3rem); line-height: 1.05; }
+  .page-head .lede { margin-top: 20px; font-size: 1.12rem; line-height: 1.55; color: var(--ink-soft); }
+  .page-head .effective {
+    margin-top: 22px; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--ink-soft); font-weight: 600;
+  }
+
+  /* a legal section: its NAME as a micro-label, its summary as the heading */
+  /* scroll-margin clears the sticky nav when a #clause link jumps here */
+  section { padding: 46px 0 0; scroll-margin-top: 84px; }
+  section:last-of-type { padding-bottom: 92px; }
+  .sec-label {
+    font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--accent); font-weight: 600; margin-bottom: 10px;
+  }
+  section h2 { font-size: 1.5rem; }
+  section h3 { font-size: 1.12rem; margin-top: 30px; }
+  section h2 + p, section h3 + p { margin-top: 14px; }
+  section p + p, section p + ul, section ul + p { margin-top: 16px; }
+  section p, section li { color: var(--ink-soft); }
+  section li strong, section p strong { color: var(--ink); font-weight: 600; }
+  section ul { margin: 16px 0 0; padding-left: 20px; }
+  section li + li { margin-top: 10px; }
+
+  .contact-row { display: flex; flex-wrap: wrap; gap: 38px; margin-top: 24px; }
+  .contact-item .label {
+    display: block; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--accent); font-weight: 600; margin-bottom: 7px;
+  }
   .contact-item a, .contact-item span.value {
-    font-family: "Zilla Slab", Georgia, serif;
-    font-size: 1.25rem;
-    color: var(--ink);
-    text-decoration: none;
-    border-bottom: 1px solid var(--rule-strong);
-    padding-bottom: 2px;
+    font-family: "Zilla Slab", Georgia, serif; font-size: 1.2rem; color: var(--ink);
+    text-decoration: none; border-bottom: 1px solid var(--rule-strong); padding-bottom: 2px;
   }
-  .contact-item a:hover { border-bottom-color: var(--accent); color: var(--accent); }
-  .contact-item a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+  .contact-item a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  .contact-item a { -webkit-tap-highlight-color: transparent; }
+  @media (prefers-reduced-motion: no-preference) {
+    .contact-item a { transition: transform 100ms ease-out, color 100ms ease-out; }
+    .contact-item a:active { transform: scale(0.97); }
+  }
+
+  @media (max-width: 620px) {
+    .page-head { padding-top: 54px; }
+    .table-scroll { margin-left: -20px; margin-right: -20px; padding: 0 20px; }
+    .table-scroll tbody td:first-child { width: 8em; }
+  }
 
   /* ---------- Footer ---------- */
-  footer { background: var(--rock-950); color: var(--sand-50); padding: 58px 0 38px; margin-top: 40px; }
+  footer { background: var(--rock-950); color: var(--sand-50); padding: 58px 0 38px; }
   footer a { color: rgba(246,242,233,0.68); text-decoration: none; }
   footer a:hover { color: #d8672f; }
-  footer .wrap { display: block; }
   .foot-grid { display: flex; flex-wrap: wrap; gap: 36px; }
   .foot-about { flex: 1.6 1 280px; min-width: 0; }
   .foot-brand { display: flex; align-items: center; gap: 10px; font-family: "Zilla Slab", Georgia, serif; font-weight: 700; color: var(--sand-50); }
@@ -243,65 +208,6 @@
     font-size: 0.86rem; color: rgba(246,242,233,0.45);
   }
 
-  /* ---------- Site nav: translucent chrome, content scrolls under ---------- */
-  nav.site {
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    background: color-mix(in srgb, var(--bg) 72%, transparent);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-  }
-  /* scroll edge, not a hard rule: separation only where chrome overlaps content */
-  nav.site::after {
-    content: "";
-    position: absolute;
-    left: 0; right: 0; top: 100%;
-    height: 14px;
-    background: linear-gradient(to bottom, color-mix(in srgb, var(--bg) 65%, transparent), transparent);
-    pointer-events: none;
-  }
-  nav.site .wrap { display: flex; align-items: center; gap: 26px; padding: 14px 28px; }
-  .brand {
-    display: flex; align-items: center; gap: 10px;
-    font-family: "Zilla Slab", Georgia, serif; font-weight: 700; font-size: 1.05rem;
-    color: var(--ink); text-decoration: none; letter-spacing: -0.01em;
-  }
-  .brand img { width: 26px; height: 26px; border-radius: 7px; display: block; }
-  nav.site .links { margin-left: auto; display: flex; align-items: center; gap: 24px; }
-  nav.site .links a {
-    position: relative;
-    font-size: 0.92rem; font-weight: 500; color: var(--ink-soft); text-decoration: none;
-  }
-  nav.site .links a:hover { color: var(--ink); }
-  nav.site .links a[aria-current="page"] { color: var(--accent); }
-  /* invisible hit padding: ~44px touch target without changing the visual box */
-  nav.site .links a::before { content: ""; position: absolute; inset: -14px -8px; }
-  .nav-cta {
-    background: var(--accent); color: var(--on-accent) !important;
-    padding: 9px 17px; border-radius: 8px; font-weight: 600; font-size: 0.9rem !important;
-  }
-  .nav-cta:hover { background: var(--accent-strong); color: var(--on-accent) !important; }
-  @media (max-width: 760px) { nav.site .links a.hide-sm { display: none; } }
-
-  /* ---------- Press feedback: instant, on press, not on release ---------- */
-  a.badge, nav.site .links a, .brand, .foot-col a, .contact-item a {
-    -webkit-tap-highlight-color: transparent;
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    a.badge, nav.site .links a, .brand, .foot-col a, .contact-item a {
-      transition: transform 100ms ease-out, color 100ms ease-out, border-color 150ms ease, background 150ms ease;
-    }
-    a.badge:active, nav.site .links a:active, .brand:active, .foot-col a:active, .contact-item a:active {
-      transform: scale(0.97);
-    }
-  }
-
-  /* ---------- Size-specific tracking: tighten as type grows, body stays at 0 ---------- */
-  h2 { letter-spacing: -0.012em; }
-  h3 { letter-spacing: -0.006em; }
-
-  /* ---------- Transparency and contrast preferences ---------- */
   @media (prefers-reduced-transparency: reduce) {
     nav.site {
       background: var(--bg);
@@ -320,7 +226,6 @@
     }
     nav.site::after { display: none; }
   }
-  @media (max-width: 420px) { nav.site .wrap { gap: 14px; padding: 14px 20px; } }
 </style>
 <body>
 
@@ -337,34 +242,28 @@
   </div>
 </nav>
 
-<header class="hero">
-  <div class="wrap">
-    <span class="stamp">Screen Night &mdash; iOS</span>
+<header class="page-head">
+  <div class="wrap-narrow">
     <h1>Terms of Use</h1>
     <p class="lede">The rules for using Screen Night, in plain language. The most important part is short: be decent to the people you connect with, or you won&rsquo;t be able to keep using Friends.</p>
-    <div class="underline"></div>
     <p class="effective">Effective 30 September 2026</p>
   </div>
 </header>
 
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="stamp">01 &mdash; The agreement</span>
-      <div class="rule-fill"></div>
-    </div>
+<main>
+
+<section id="the-agreement">
+  <div class="wrap-narrow">
+    <p class="sec-label">01 &mdash; The agreement</p>
     <h2>Who these terms are between.</h2>
     <p>Screen Night is made by Red Rock Apps LLC, a Colorado company (&ldquo;we&rdquo;, &ldquo;us&rdquo;). These terms are an agreement between you and us about using the app and the service behind it. They work alongside <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Apple&rsquo;s Standard License Agreement</a>, which covers your license to the app itself. How we handle your data is described in our <a href="/privacy/">Privacy Policy</a>.</p>
     <p>By using Screen Night you agree to these terms. By setting up Friends you also agree to the rules in section 04, which exist because Friends shows your name and activity to other people.</p>
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="stamp">02 &mdash; Your account</span>
-      <div class="rule-fill"></div>
-    </div>
+<section id="your-account">
+  <div class="wrap-narrow">
+    <p class="sec-label">02 &mdash; Your account</p>
     <h2>One person, looked after.</h2>
     <ul>
       <li>You must be at least 13 years old to use Screen Night.</li>
@@ -374,12 +273,9 @@
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="stamp">03 &mdash; Subscriptions</span>
-      <div class="rule-fill"></div>
-    </div>
+<section id="subscriptions">
+  <div class="wrap-narrow">
+    <p class="sec-label">03 &mdash; Subscriptions</p>
     <h2>Paid through Apple, cancelled through Apple.</h2>
     <p>Screen Night Premium is an auto-renewing subscription, monthly or yearly, bought through the App Store and billed to your Apple ID. It renews automatically at the price shown when you subscribed unless you cancel at least 24 hours before the end of the current period. A free trial, when offered, becomes a paid subscription at the end of the trial unless you cancel before then.</p>
     <p>You manage and cancel your subscription in your Apple ID settings, not in Screen Night. Refunds are handled by Apple under its own policies. Deleting your Screen Night account does not cancel a subscription, which is why the app asks you to cancel first.</p>
@@ -387,12 +283,9 @@
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="stamp">04 &mdash; Friends</span>
-      <div class="rule-fill"></div>
-    </div>
+<section id="friends">
+  <div class="wrap-narrow">
+    <p class="sec-label">04 &mdash; Friends</p>
     <h2>No tolerance for objectionable content or abusive users.</h2>
     <p>Friends lets you connect with people you know and see what each other is watching. It only works if people can trust it, so when you use Friends you agree not to:</p>
     <ul>
@@ -406,97 +299,78 @@
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="stamp">05 &mdash; What you share</span>
-      <div class="rule-fill"></div>
-    </div>
+<section id="what-you-share">
+  <div class="wrap-narrow">
+    <p class="sec-label">05 &mdash; What you share</p>
     <h2>Yours, shown to the friends you choose.</h2>
     <p>When you connect with someone, they can see your name and avatar, the shows you&rsquo;re watching and how far along you are, the shows you&rsquo;ve finished, the shows you loved or liked, and the shows you recommend to them &mdash; along with the day you last watched or rated each one, and how many episodes you&rsquo;ve watched, in all and recently. They never see your email address, your phone number, your watch list, or the shows you didn&rsquo;t like. You can hide a single show, pause sharing entirely, or remove a friend at any time. Your invite link, and any show you recommend from Screen Night, lets whoever opens it connect with you straight away, so share them with people you know. If one ends up somewhere you didn&rsquo;t mean it to, choose Replace Invite Link in Friends Settings: old links stop working, and friends stay friends.</p>
     <p>What you share remains yours. You give us permission to store it and show it to the friends you&rsquo;ve connected with, only so that Friends can work, and that permission ends when you stop sharing or delete your account.</p>
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="stamp">06 &mdash; Show information</span>
-      <div class="rule-fill"></div>
-    </div>
+<section id="show-information">
+  <div class="wrap-narrow">
+    <p class="sec-label">06 &mdash; Show information</p>
     <h2>Best effort, not a guarantee.</h2>
     <p>Show and episode details, air times and posters come from <a href="https://www.tvmaze.com">TVmaze</a>, a community-maintained database, and can be incomplete, late or wrong. Networks move schedules without notice. Screen Night isn&rsquo;t affiliated with TVmaze, IMDb, or any network or streaming service, and their names and trademarks belong to their owners.</p>
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="stamp">07 &mdash; Fair use</span>
-      <div class="rule-fill"></div>
-    </div>
+<section id="fair-use">
+  <div class="wrap-narrow">
+    <p class="sec-label">07 &mdash; Fair use</p>
     <h2>Use the app the way it&rsquo;s meant to be used.</h2>
     <p>Don&rsquo;t break the law with Screen Night, and don&rsquo;t try to break Screen Night: no interfering with the service, getting around the subscription, automated or bulk access, collecting other people&rsquo;s data, or reverse engineering the app except where the law allows it.</p>
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="stamp">08 &mdash; Ending</span>
-      <div class="rule-fill"></div>
-    </div>
+<section id="ending">
+  <div class="wrap-narrow">
+    <p class="sec-label">08 &mdash; Ending</p>
     <h2>You can leave any time.</h2>
     <p>You can delete your account from inside the app at any time (Settings &rarr; Delete Account), and everything tied to it goes with it, as the Privacy Policy describes. We may suspend or close an account that breaks these terms or the law, or that puts other people or the service at risk. If we stop offering Screen Night altogether, we&rsquo;ll give reasonable notice in the app where we can.</p>
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="stamp">09 &mdash; The legal part</span>
-      <div class="rule-fill"></div>
-    </div>
+<section id="the-legal-part">
+  <div class="wrap-narrow">
+    <p class="sec-label">09 &mdash; The legal part</p>
     <h2>Provided as is.</h2>
     <p>Screen Night is provided &ldquo;as is&rdquo; and &ldquo;as available&rdquo;. We work hard to keep it running and your data safe, but we can&rsquo;t promise it will always be available, error-free, or right about every episode. To the fullest extent the law allows, we aren&rsquo;t liable for indirect or consequential losses, and our total liability for any claim about Screen Night is limited to what you paid for it in the 12 months before the claim. Some places don&rsquo;t allow these limits, and nothing here takes away rights you have under the consumer laws where you live.</p>
     <p>These terms are governed by the laws of the State of Colorado, and disputes go to the courts there, except where the law where you live says otherwise.</p>
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="stamp">10 &mdash; Changes</span>
-      <div class="rule-fill"></div>
-    </div>
+<section id="changes">
+  <div class="wrap-narrow">
+    <p class="sec-label">10 &mdash; Changes</p>
     <h2>If these change, they change here.</h2>
     <p>When these terms are updated, the effective date at the top of the page changes with them. If a change matters to how you use Screen Night, we&rsquo;ll say so in the app. Continuing to use Screen Night after a change means you accept the updated terms.</p>
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="stamp">11 &mdash; Contact</span>
-      <div class="rule-fill"></div>
-    </div>
+<section id="contact">
+  <div class="wrap-narrow">
+    <p class="sec-label">11 &mdash; Contact</p>
     <h2>Questions, reports, or anything else.</h2>
     <div class="contact-row">
       <div class="contact-item">
-        <span class="stamp">Email</span>
+        <span class="label">Email</span>
         <a href="mailto:mike@redrockappsllc.com">mike@redrockappsllc.com</a>
       </div>
       <div class="contact-item">
-        <span class="stamp">Company</span>
+        <span class="label">Company</span>
         <span class="value">Red Rock Apps LLC</span>
       </div>
       <div class="contact-item">
-        <span class="stamp">Based in</span>
+        <span class="label">Based in</span>
         <span class="value">Rocky Mountain foothills, CO</span>
       </div>
     </div>
   </div>
 </section>
+
+</main>
 
 <footer>
   <div class="wrap">
