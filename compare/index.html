@@ -28,7 +28,6 @@
     --sand-50: #f6f2e9;
     --sienna: #b8451f;
     --sienna-dim: #9a3a19;
-    --dusk: #47606c;
 
     --bg: var(--sand-50);
     --bg-raised: var(--sand-100);
@@ -36,11 +35,9 @@
     --ink-soft: var(--rock-600);
     --accent: var(--sienna);
     --accent-strong: var(--sienna-dim);
-    --secondary: var(--dusk);
-    --rule: color-mix(in srgb, var(--rock-950) 16%, transparent);
-    --rule-strong: color-mix(in srgb, var(--rock-950) 30%, transparent);
-    --frame-bg: var(--sand-100);
-    --shadow: color-mix(in srgb, var(--rock-950) 10%, transparent);
+    --on-accent: #ffffff;
+    --rule: color-mix(in srgb, var(--rock-950) 14%, transparent);
+    --rule-strong: color-mix(in srgb, var(--rock-950) 28%, transparent);
   }
 
   @media (prefers-color-scheme: dark) {
@@ -51,11 +48,9 @@
       --ink-soft: color-mix(in srgb, var(--sand-50) 62%, var(--rock-950));
       --accent: #d8672f;
       --accent-strong: #e2814f;
-      --secondary: #8fb2c2;
-      --rule: color-mix(in srgb, var(--sand-50) 18%, transparent);
-      --rule-strong: color-mix(in srgb, var(--sand-50) 32%, transparent);
-      --frame-bg: var(--rock-800);
-      --shadow: color-mix(in srgb, black 40%, transparent);
+      --on-accent: #17130f;
+      --rule: color-mix(in srgb, var(--sand-50) 16%, transparent);
+      --rule-strong: color-mix(in srgb, var(--sand-50) 30%, transparent);
     }
   }
 
@@ -66,11 +61,9 @@
     --ink-soft: color-mix(in srgb, var(--sand-50) 62%, var(--rock-950));
     --accent: #d8672f;
     --accent-strong: #e2814f;
-    --secondary: #8fb2c2;
-    --rule: color-mix(in srgb, var(--sand-50) 18%, transparent);
-    --rule-strong: color-mix(in srgb, var(--sand-50) 32%, transparent);
-    --frame-bg: var(--rock-800);
-    --shadow: color-mix(in srgb, black 40%, transparent);
+    --on-accent: #17130f;
+    --rule: color-mix(in srgb, var(--sand-50) 16%, transparent);
+    --rule-strong: color-mix(in srgb, var(--sand-50) 30%, transparent);
   }
 
   * { box-sizing: border-box; }
@@ -80,27 +73,11 @@
     background: var(--bg);
     color: var(--ink);
     font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
-    /* rem, not px, so the reader's own text-size setting still scales the page */
     font-size: 1.0625rem;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     font-optical-sizing: auto;
-    /* no 300ms double-tap-zoom delay on the tap path */
     touch-action: manipulation;
-  }
-
-  .wrap {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 0 28px;
-  }
-
-  .stamp {
-    font-family: "Space Mono", monospace;
-    font-size: 12.5px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
   }
 
   h1, h2, h3 {
@@ -109,101 +86,170 @@
     text-wrap: balance;
     margin: 0;
   }
+  h1 { letter-spacing: -0.024em; }
+  h2 { letter-spacing: -0.015em; }
+  h3 { letter-spacing: -0.008em; }
 
-  /* ---------- Hero ---------- */
-  header.hero {
-    padding: 72px 0 52px;
-    border-bottom: 1px solid var(--rule);
-  }
-  header.hero .stamp { display: block; margin-bottom: 22px; }
-  header.hero h1 {
-    font-size: clamp(2.3rem, 5.2vw, 3.4rem);
-    line-height: 1.04;
-    letter-spacing: -0.022em;
-  }
-  header.hero .lede {
-    margin-top: 22px;
-    max-width: 34em;
-    font-size: 1.15rem;
-    line-height: 1.55;
-    color: var(--ink-soft);
-  }
-  .underline {
-    margin-top: 30px;
-    height: 3px;
-    width: 84px;
-    background: var(--accent);
-  }
-
-  /* ---------- Sections ---------- */
-  section {
-    padding: 48px 0;
-    border-bottom: 1px solid var(--rule);
-  }
-  section:last-of-type { border-bottom: none; }
-
-  .section-head {
-    display: flex;
-    align-items: baseline;
-    gap: 16px;
-    margin-bottom: 24px;
-  }
-  .section-head .stamp { white-space: nowrap; }
-  .section-head .rule-fill {
-    flex: 1;
-    height: 1px;
-    background: var(--rule-strong);
-  }
-
-  section h2 {
-    font-size: 1.6rem;
-    margin-bottom: 16px;
-  }
-  section h3 {
-    font-size: 1.12rem;
-    margin-top: 26px;
-    margin-bottom: 8px;
-  }
-
-  section p, section li {
-    max-width: 40em;
-    color: var(--ink-soft);
-    font-size: 1.04rem;
-  }
-  section p + p { margin-top: 14px; }
-
-  ul { padding-left: 20px; margin: 12px 0; }
-  li + li { margin-top: 9px; }
-  li strong, p strong { color: var(--ink); font-weight: 600; }
-
+  p { margin: 0; }
   a { color: var(--accent); }
   a:hover { color: var(--accent-strong); }
   a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
-  /* ---------- Contact ---------- */
-  .contact-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    margin-top: 24px;
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+  .wrap-narrow { max-width: 680px; margin: 0 auto; padding: 0 28px; }
+
+  /* ---------- Site nav ---------- */
+  nav.site {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: color-mix(in srgb, var(--bg) 72%, transparent);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
   }
-  .contact-item .stamp { display: block; margin-bottom: 8px; }
-  .contact-item a, .contact-item span.value {
-    font-family: "Zilla Slab", Georgia, serif;
-    font-size: 1.25rem;
+  nav.site::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; top: 100%;
+    height: 14px;
+    background: linear-gradient(to bottom, color-mix(in srgb, var(--bg) 65%, transparent), transparent);
+    pointer-events: none;
+  }
+  nav.site .wrap { display: flex; align-items: center; gap: 26px; padding-top: 14px; padding-bottom: 14px; }
+  .brand {
+    display: flex; align-items: center; gap: 10px;
+    font-family: "Zilla Slab", Georgia, serif; font-weight: 700; font-size: 1.05rem;
+    color: var(--ink); text-decoration: none; letter-spacing: -0.01em;
+  }
+  .brand img { width: 26px; height: 26px; border-radius: 7px; display: block; }
+  nav.site .links { margin-left: auto; display: flex; align-items: center; gap: 24px; }
+  nav.site .links a {
+    position: relative;
+    font-size: 0.92rem; font-weight: 500; color: var(--ink-soft); text-decoration: none;
+  }
+  nav.site .links a:hover { color: var(--ink); }
+  nav.site .links a::before { content: ""; position: absolute; inset: -14px -8px; }
+  .nav-cta {
+    background: var(--accent); color: var(--on-accent) !important;
+    padding: 9px 17px; border-radius: 8px; font-weight: 600; font-size: 0.9rem !important;
+  }
+  .nav-cta:hover { background: var(--accent-strong); color: var(--on-accent) !important; }
+  @media (max-width: 760px) { nav.site .links a.hide-sm { display: none; } }
+
+  .brand, nav.site .links a, .foot-col a { -webkit-tap-highlight-color: transparent; }
+  @media (prefers-reduced-motion: no-preference) {
+    .brand, nav.site .links a, .foot-col a {
+      transition: transform 100ms ease-out, color 100ms ease-out, background 150ms ease;
+    }
+    .brand:active, nav.site .links a:active, .foot-col a:active { transform: scale(0.97); }
+  }
+
+  nav.site .links a[aria-current="page"] { color: var(--accent); }
+
+  /* ---------- Page ---------- */
+  .page-head { padding: 78px 0 10px; }
+  .page-head h1 { font-size: clamp(2.2rem, 4vw, 3rem); line-height: 1.05; }
+  .page-head .lede { margin-top: 20px; font-size: 1.16rem; line-height: 1.5; color: var(--ink-soft); }
+
+  .prose p { color: var(--ink-soft); font-size: 1.05rem; }
+  .prose p + p { margin-top: 18px; }
+  .prose h2 { margin-top: 52px; font-size: 1.5rem; }
+  .prose h2:first-child { margin-top: 0; }
+  .prose h2 + p { margin-top: 14px; }
+  .prose strong { color: var(--ink); font-weight: 600; }
+
+  .prose { padding: 40px 0 0; }
+  .prose-tail { padding-bottom: 96px; }
+
+  /* ---------- Comparison table ---------- */
+  /* text keeps the narrow measure; only the table itself breaks out wider */
+  .table-sec { padding: 52px 0 0; }
+  .table-sec h2 { font-size: 1.5rem; }
+  .table-scroll {
+    margin: 26px -28px 0;
+    padding: 0 28px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+  table.compare {
+    border-collapse: collapse;
+    min-width: 760px;
+    width: 100%;
+    font-size: 0.95rem;
+    line-height: 1.45;
+  }
+  table.compare caption {
+    position: absolute; width: 1px; height: 1px; overflow: hidden;
+    clip: rect(0 0 0 0); white-space: nowrap;
+  }
+  table.compare th, table.compare td {
+    text-align: left;
+    vertical-align: top;
+    padding: 13px 15px;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink-soft);
+  }
+  table.compare thead th {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     color: var(--ink);
-    text-decoration: none;
     border-bottom: 1px solid var(--rule-strong);
-    padding-bottom: 2px;
+    white-space: nowrap;
+    padding-bottom: 11px;
   }
-  .contact-item a:hover { border-bottom-color: var(--accent); color: var(--accent); }
-  .contact-item a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+  table.compare tbody th {
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  /* first column pins while the table scrolls sideways; below the nav's z-index 20 */
+  table.compare th[scope="row"], table.compare thead th:first-child {
+    position: sticky;
+    left: 0;
+    background: var(--bg);
+    z-index: 1;
+  }
+  table.compare .ours { background: var(--bg-raised); color: var(--ink); }
+  table.compare thead th.ours { color: var(--accent); }
+  .table-note { margin-top: 20px; font-size: 0.92rem; color: var(--ink-soft); }
+
+  .fits { margin: 24px 0 0; padding: 0; list-style: none; }
+  .fits li { position: relative; padding-left: 24px; margin-bottom: 14px; color: var(--ink-soft); }
+  .fits li::before {
+    content: ""; position: absolute; left: 0; top: 0.62em;
+    width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
+  }
+  .fits li strong { color: var(--ink); font-weight: 600; }
+
+  .cta {
+    display: inline-block; margin-top: 28px; padding: 15px 26px; border-radius: 12px;
+    background: var(--accent); color: var(--on-accent); text-decoration: none;
+    font-weight: 600; font-size: 1.02rem;
+  }
+  .cta:hover { background: var(--accent-strong); color: var(--on-accent); }
+
+  /* ---------- Press feedback, matching the chrome ---------- */
+  .cta { -webkit-tap-highlight-color: transparent; }
+  @media (prefers-reduced-motion: no-preference) {
+    .cta { transition: transform 100ms ease-out, color 100ms ease-out, background 150ms ease; }
+    .cta:active { transform: scale(0.97); }
+  }
+
+  @media (max-width: 620px) {
+    .page-head { padding-top: 54px; }
+    table.compare { min-width: 660px; font-size: 0.9rem; }
+    table.compare th, table.compare td { padding: 11px 11px; }
+    table.compare tbody th { white-space: normal; width: 6.5em; }
+    .table-scroll { margin-left: -20px; margin-right: -20px; padding: 0 20px; }
+  }
 
   /* ---------- Footer ---------- */
-  footer { background: var(--rock-950); color: var(--sand-50); padding: 58px 0 38px; margin-top: 40px; }
+  footer { background: var(--rock-950); color: var(--sand-50); padding: 58px 0 38px; }
   footer a { color: rgba(246,242,233,0.68); text-decoration: none; }
   footer a:hover { color: #d8672f; }
-  footer .wrap { display: block; }
   .foot-grid { display: flex; flex-wrap: wrap; gap: 36px; }
   .foot-about { flex: 1.6 1 280px; min-width: 0; }
   .foot-brand { display: flex; align-items: center; gap: 10px; font-family: "Zilla Slab", Georgia, serif; font-weight: 700; color: var(--sand-50); }
@@ -224,65 +270,6 @@
     font-size: 0.86rem; color: rgba(246,242,233,0.45);
   }
 
-  /* ---------- Site nav: translucent chrome, content scrolls under ---------- */
-  nav.site {
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    background: color-mix(in srgb, var(--bg) 72%, transparent);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-  }
-  /* scroll edge, not a hard rule: separation only where chrome overlaps content */
-  nav.site::after {
-    content: "";
-    position: absolute;
-    left: 0; right: 0; top: 100%;
-    height: 14px;
-    background: linear-gradient(to bottom, color-mix(in srgb, var(--bg) 65%, transparent), transparent);
-    pointer-events: none;
-  }
-  nav.site .wrap { display: flex; align-items: center; gap: 26px; padding: 14px 28px; }
-  .brand {
-    display: flex; align-items: center; gap: 10px;
-    font-family: "Zilla Slab", Georgia, serif; font-weight: 700; font-size: 1.05rem;
-    color: var(--ink); text-decoration: none; letter-spacing: -0.01em;
-  }
-  .brand img { width: 26px; height: 26px; border-radius: 7px; display: block; }
-  nav.site .links { margin-left: auto; display: flex; align-items: center; gap: 24px; }
-  nav.site .links a {
-    position: relative;
-    font-size: 0.92rem; font-weight: 500; color: var(--ink-soft); text-decoration: none;
-  }
-  nav.site .links a:hover { color: var(--ink); }
-  nav.site .links a[aria-current="page"] { color: var(--accent); }
-  /* invisible hit padding: ~44px touch target without changing the visual box */
-  nav.site .links a::before { content: ""; position: absolute; inset: -14px -8px; }
-  .nav-cta {
-    background: var(--accent); color: var(--on-accent) !important;
-    padding: 9px 17px; border-radius: 8px; font-weight: 600; font-size: 0.9rem !important;
-  }
-  .nav-cta:hover { background: var(--accent-strong); color: var(--on-accent) !important; }
-  @media (max-width: 760px) { nav.site .links a.hide-sm { display: none; } }
-
-  /* ---------- Press feedback: instant, on press, not on release ---------- */
-  a.badge, nav.site .links a, .brand, .foot-col a, .contact-item a {
-    -webkit-tap-highlight-color: transparent;
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    a.badge, nav.site .links a, .brand, .foot-col a, .contact-item a {
-      transition: transform 100ms ease-out, color 100ms ease-out, border-color 150ms ease, background 150ms ease;
-    }
-    a.badge:active, nav.site .links a:active, .brand:active, .foot-col a:active, .contact-item a:active {
-      transform: scale(0.97);
-    }
-  }
-
-  /* ---------- Size-specific tracking: tighten as type grows, body stays at 0 ---------- */
-  h2 { letter-spacing: -0.012em; }
-  h3 { letter-spacing: -0.006em; }
-
-  /* ---------- Transparency and contrast preferences ---------- */
   @media (prefers-reduced-transparency: reduce) {
     nav.site {
       background: var(--bg);
@@ -301,81 +288,6 @@
     }
     nav.site::after { display: none; }
   }
-  @media (max-width: 420px) { nav.site .wrap { gap: 14px; padding: 14px 20px; } }
-
-  /* ---------- Comparison table ---------- */
-  .table-scroll {
-    margin: 8px -28px 0;
-    padding: 0 28px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  table.compare {
-    border-collapse: collapse;
-    min-width: 720px;
-    width: 100%;
-    font-size: 0.95rem;
-    line-height: 1.45;
-  }
-  table.compare caption {
-    position: absolute; width: 1px; height: 1px; overflow: hidden;
-    clip: rect(0 0 0 0); white-space: nowrap;
-  }
-  table.compare th, table.compare td {
-    text-align: left;
-    vertical-align: top;
-    padding: 12px 14px;
-    border-bottom: 1px solid var(--rule);
-    color: var(--ink-soft);
-  }
-  table.compare thead th {
-    font-family: "Space Mono", monospace;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink);
-    border-bottom: 1px solid var(--rule-strong);
-    white-space: nowrap;
-  }
-  table.compare tbody th {
-    font-weight: 600;
-    color: var(--ink);
-    white-space: nowrap;
-  }
-  table.compare th[scope="row"], table.compare thead th:first-child {
-    position: sticky;
-    left: 0;
-    background: var(--bg);
-    z-index: 1;
-  }
-  table.compare .ours {
-    background: var(--bg-raised);
-    color: var(--ink);
-  }
-  table.compare thead th.ours { color: var(--accent); }
-  .table-note {
-    margin-top: 18px;
-    font-size: 0.92rem;
-  }
-
-  .fits { list-style: none; padding: 0; }
-  .fits li { padding-left: 0; }
-
-  .cta {
-    display: inline-block; margin-top: 26px; padding: 15px 26px; border-radius: 12px;
-    background: var(--accent); color: #fff; text-decoration: none;
-    font-family: "Archivo", "Helvetica Neue", Arial, sans-serif; font-weight: 600; font-size: 1.05rem;
-  }
-  .cta:hover { background: var(--accent-strong); color: #fff; }
-  .cta:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-
-  @media (max-width: 620px) {
-    header.hero { padding: 52px 0 40px; }
-    table.compare { min-width: 640px; font-size: 0.9rem; }
-    table.compare th, table.compare td { padding: 10px 10px; }
-    table.compare tbody th { white-space: normal; width: 6.5em; }
-  }
 </style>
 </head>
 <body>
@@ -393,148 +305,136 @@
   </div>
 </nav>
 
-<header class="hero">
-  <div class="wrap">
-    <span class="stamp">Screen Night &mdash; iOS</span>
+<header class="page-head">
+  <div class="wrap-narrow">
     <h1>How Screen Night compares with Trakt, Serializd, Sofa Time and JustWatch</h1>
     <p class="lede">Checked 1 October 2026 &middot; US App Store prices</p>
-    <div class="underline"></div>
   </div>
 </header>
 
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="stamp">01 &mdash; Who it's for</span>
-      <div class="rule-fill"></div>
+<main>
+  <section class="prose">
+    <div class="wrap-narrow">
+      <h2>Who Screen Night is for</h2>
+      <p>Screen Night is for people who watch TV with specific people &mdash; a partner, family, a few friends &mdash; and want to keep up together without a public profile, ads or tracking.</p>
+      <p>It isn't the right app if you want to track movies, want something free, use Android, or want a public community to talk about episodes. The apps below do those things well, and we say which one fits.</p>
     </div>
-    <h2>Who Screen Night is for</h2>
-    <p>Screen Night is for people who watch TV with specific people &mdash; a partner, family, a few friends &mdash; and want to keep up together without a public profile, ads or tracking.</p>
-    <p>It isn't the right app if you want to track movies, want something free, use Android, or want a public community to talk about episodes. The apps below do those things well, and we say which one fits.</p>
-  </div>
-</section>
+  </section>
 
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="stamp">02 &mdash; Side by side</span>
-      <div class="rule-fill"></div>
+  <section class="table-sec">
+    <div class="wrap-narrow">
+      <h2>Screen Night, Trakt, Serializd, Sofa Time and JustWatch side by side</h2>
     </div>
-    <h2>Screen Night, Trakt, Serializd, Sofa Time and JustWatch side by side</h2>
-    <div class="table-scroll">
-      <table class="compare">
-        <caption>Screen Night compared with Trakt, Serializd, Sofa Time and JustWatch</caption>
-        <thead>
-          <tr>
-            <th aria-hidden="true"></th>
-            <th scope="col" class="ours">Screen Night</th>
-            <th scope="col">Trakt</th>
-            <th scope="col">Serializd</th>
-            <th scope="col">Sofa Time</th>
-            <th scope="col">JustWatch</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">Price</th>
-            <td class="ours">7-day free trial, then $1.99/mo or $12.99/yr, everything included</td>
-            <td>Free with limits; VIP $59.99/yr</td>
-            <td>Free; optional Patreon from $3/mo</td>
-            <td>Free; optional one-time Premium $9.99</td>
-            <td>Free; Pro $3.99</td>
-          </tr>
-          <tr>
-            <th scope="row">Ads</th>
-            <td class="ours">No</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>No</td>
-            <td>Yes</td>
-          </tr>
-          <tr>
-            <th scope="row">Tracks you across apps</th>
-            <td class="ours">No</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>No</td>
-            <td>Yes</td>
-          </tr>
-          <tr>
-            <th scope="row">Who sees your activity</th>
-            <td class="ours">Friends you connect with; no public profile</td>
-            <td>Public profiles and comments (private option)</td>
-            <td>Public profiles, reviews, discussions</td>
-            <td>Public follows, feed and comments</td>
-            <td>No friends feed</td>
-          </tr>
-          <tr>
-            <th scope="row">Movies</th>
-            <td class="ours">No</td>
-            <td>Yes</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>Yes</td>
-          </tr>
-          <tr>
-            <th scope="row">TV Time import</th>
-            <td class="ours">No</td>
-            <td>Yes (web)</td>
-            <td>Yes (web)</td>
-            <td>Yes</td>
-            <td>Yes (web)</td>
-          </tr>
-          <tr>
-            <th scope="row">Export your data</th>
-            <td class="ours">Yes</td>
-            <td>Yes</td>
-            <td>None found</td>
-            <td>Yes</td>
-            <td>By email request</td>
-          </tr>
-          <tr>
-            <th scope="row">Platforms</th>
-            <td class="ours">iPhone, iPad</td>
-            <td>iPhone, iPad, Apple TV, Android, web</td>
-            <td>iPhone, Android, web</td>
-            <td>iPhone, iPad, Mac, Android</td>
-            <td>iPhone, iPad, Apple TV, Android, TVs, web</td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="wrap">
+      <div class="table-scroll">
+        <table class="compare">
+          <caption>Screen Night compared with Trakt, Serializd, Sofa Time and JustWatch</caption>
+          <thead>
+            <tr>
+              <th aria-hidden="true"></th>
+              <th scope="col" class="ours">Screen Night</th>
+              <th scope="col">Trakt</th>
+              <th scope="col">Serializd</th>
+              <th scope="col">Sofa Time</th>
+              <th scope="col">JustWatch</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Price</th>
+              <td class="ours">7-day free trial, then $1.99/mo or $12.99/yr, everything included</td>
+              <td>Free with limits; VIP $59.99/yr</td>
+              <td>Free; optional Patreon from $3/mo</td>
+              <td>Free; optional one-time Premium $9.99</td>
+              <td>Free; Pro $3.99</td>
+            </tr>
+            <tr>
+              <th scope="row">Ads</th>
+              <td class="ours">No</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <th scope="row">Tracks you across apps</th>
+              <td class="ours">No</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <th scope="row">Who sees your activity</th>
+              <td class="ours">Friends you connect with; no public profile</td>
+              <td>Public profiles and comments (private option)</td>
+              <td>Public profiles, reviews, discussions</td>
+              <td>Public follows, feed and comments</td>
+              <td>No friends feed</td>
+            </tr>
+            <tr>
+              <th scope="row">Movies</th>
+              <td class="ours">No</td>
+              <td>Yes</td>
+              <td>No</td>
+              <td>Yes</td>
+              <td>Yes</td>
+            </tr>
+            <tr>
+              <th scope="row">TV Time import</th>
+              <td class="ours">No</td>
+              <td>Yes (web)</td>
+              <td>Yes (web)</td>
+              <td>Yes</td>
+              <td>Yes (web)</td>
+            </tr>
+            <tr>
+              <th scope="row">Export your data</th>
+              <td class="ours">Yes</td>
+              <td>Yes</td>
+              <td>None found</td>
+              <td>Yes</td>
+              <td>By email request</td>
+            </tr>
+            <tr>
+              <th scope="row">Platforms</th>
+              <td class="ours">iPhone, iPad</td>
+              <td>iPhone, iPad, Apple TV, Android, web</td>
+              <td>iPhone, Android, web</td>
+              <td>iPhone, iPad, Mac, Android</td>
+              <td>iPhone, iPad, Apple TV, Android, TVs, web</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <p class="table-note">Ads and tracking come from each app's App Store listing: the &ldquo;Contains: Advertising&rdquo; notice and the privacy label's &ldquo;Data Used to Track You&rdquo;, which developers report themselves. App Store pages: <a href="https://apps.apple.com/us/app/id1514873602" target="_blank" rel="noopener">Trakt</a>, <a href="https://apps.apple.com/us/app/id1581244120" target="_blank" rel="noopener">Serializd</a>, <a href="https://apps.apple.com/us/app/id1491037404" target="_blank" rel="noopener">Sofa Time</a>, <a href="https://apps.apple.com/us/app/id979227482" target="_blank" rel="noopener">JustWatch</a>.</p>
-  </div>
-</section>
+    <div class="wrap-narrow">
+      <p class="table-note">Ads and tracking come from each app's App Store listing: the &ldquo;Contains: Advertising&rdquo; notice and the privacy label's &ldquo;Data Used to Track You&rdquo;, which developers report themselves. App Store pages: <a href="https://apps.apple.com/us/app/id1514873602" target="_blank" rel="noopener">Trakt</a>, <a href="https://apps.apple.com/us/app/id1581244120" target="_blank" rel="noopener">Serializd</a>, <a href="https://apps.apple.com/us/app/id1491037404" target="_blank" rel="noopener">Sofa Time</a>, <a href="https://apps.apple.com/us/app/id979227482" target="_blank" rel="noopener">JustWatch</a>.</p>
+    </div>
+  </section>
 
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="stamp">03 &mdash; Which one fits you</span>
-      <div class="rule-fill"></div>
+  <section class="prose">
+    <div class="wrap-narrow">
+      <h2>Which TV tracker fits you</h2>
+      <ul class="fits">
+        <li><strong>Screen Night</strong> &mdash; you watch with people you know and want to see what they're watching and loved, with alerts that tell you the time where you live. No ads, no public profile.</li>
+        <li><strong>Trakt</strong> &mdash; you want a big community, movies and TV together, and apps on every platform, and don't mind paying for VIP to lift the limits.</li>
+        <li><strong>Serializd</strong> &mdash; you want a TV-only app like ours but free, and enjoy public reviews and discussions, with ads.</li>
+        <li><strong>Sofa Time</strong> &mdash; you want a free app with a one-time upgrade, movies, a community feed and Android.</li>
+        <li><strong>JustWatch</strong> &mdash; finding where to stream something matters most, and ads don't bother you.</li>
+      </ul>
     </div>
-    <h2>Which TV tracker fits you</h2>
-    <ul class="fits">
-      <li><strong>Screen Night</strong> &mdash; you watch with people you know and want to see what they're watching and loved, with alerts that tell you the time where you live. No ads, no public profile.</li>
-      <li><strong>Trakt</strong> &mdash; you want a big community, movies and TV together, and apps on every platform, and don't mind paying for VIP to lift the limits.</li>
-      <li><strong>Serializd</strong> &mdash; you want a TV-only app like ours but free, and enjoy public reviews and discussions, with ads.</li>
-      <li><strong>Sofa Time</strong> &mdash; you want a free app with a one-time upgrade, movies, a community feed and Android.</li>
-      <li><strong>JustWatch</strong> &mdash; finding where to stream something matters most, and ads don't bother you.</li>
-    </ul>
-  </div>
-</section>
+  </section>
 
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="stamp">04 &mdash; Why it costs money</span>
-      <div class="rule-fill"></div>
+  <section class="prose prose-tail">
+    <div class="wrap-narrow">
+      <h2>Why Screen Night costs money</h2>
+      <p>Screen Night is paid for by the people who use it, so it has no ads and no reason to track you. One price includes everything, with no limits on shows or lists.</p>
+      <p>Prices and features change. We re-check this page every month; if something here is out of date, email <a href="mailto:mike@redrockappsllc.com">mike@redrockappsllc.com</a>.</p>
+      <a class="cta" href="https://apps.apple.com/app/apple-store/id6811716971?pt=129355858&amp;ct=web-compare&amp;mt=8">Get Screen Night on the App Store</a>
     </div>
-    <h2>Why Screen Night costs money</h2>
-    <p>Screen Night is paid for by the people who use it, so it has no ads and no reason to track you. One price includes everything, with no limits on shows or lists.</p>
-    <p>Prices and features change. We re-check this page every month; if something here is out of date, email <a href="mailto:mike@redrockappsllc.com">mike@redrockappsllc.com</a>.</p>
-    <a class="cta" href="https://apps.apple.com/app/apple-store/id6811716971?pt=129355858&amp;ct=web-compare&amp;mt=8">Get Screen Night on the App Store</a>
-  </div>
-</section>
+  </section>
+</main>
 
 <footer>
   <div class="wrap">

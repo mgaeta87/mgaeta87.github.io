@@ -20,7 +20,6 @@
     --sand-50: #f6f2e9;
     --sienna: #b8451f;
     --sienna-dim: #9a3a19;
-    --dusk: #47606c;
 
     --bg: var(--sand-50);
     --bg-raised: var(--sand-100);
@@ -28,11 +27,9 @@
     --ink-soft: var(--rock-600);
     --accent: var(--sienna);
     --accent-strong: var(--sienna-dim);
-    --secondary: var(--dusk);
-    --rule: color-mix(in srgb, var(--rock-950) 16%, transparent);
-    --rule-strong: color-mix(in srgb, var(--rock-950) 30%, transparent);
-    --frame-bg: var(--sand-100);
-    --shadow: color-mix(in srgb, var(--rock-950) 10%, transparent);
+    --on-accent: #ffffff;
+    --rule: color-mix(in srgb, var(--rock-950) 14%, transparent);
+    --rule-strong: color-mix(in srgb, var(--rock-950) 28%, transparent);
   }
 
   @media (prefers-color-scheme: dark) {
@@ -43,11 +40,9 @@
       --ink-soft: color-mix(in srgb, var(--sand-50) 62%, var(--rock-950));
       --accent: #d8672f;
       --accent-strong: #e2814f;
-      --secondary: #8fb2c2;
-      --rule: color-mix(in srgb, var(--sand-50) 18%, transparent);
-      --rule-strong: color-mix(in srgb, var(--sand-50) 32%, transparent);
-      --frame-bg: var(--rock-800);
-      --shadow: color-mix(in srgb, black 40%, transparent);
+      --on-accent: #17130f;
+      --rule: color-mix(in srgb, var(--sand-50) 16%, transparent);
+      --rule-strong: color-mix(in srgb, var(--sand-50) 30%, transparent);
     }
   }
 
@@ -58,11 +53,9 @@
     --ink-soft: color-mix(in srgb, var(--sand-50) 62%, var(--rock-950));
     --accent: #d8672f;
     --accent-strong: #e2814f;
-    --secondary: #8fb2c2;
-    --rule: color-mix(in srgb, var(--sand-50) 18%, transparent);
-    --rule-strong: color-mix(in srgb, var(--sand-50) 32%, transparent);
-    --frame-bg: var(--rock-800);
-    --shadow: color-mix(in srgb, black 40%, transparent);
+    --on-accent: #17130f;
+    --rule: color-mix(in srgb, var(--sand-50) 16%, transparent);
+    --rule-strong: color-mix(in srgb, var(--sand-50) 30%, transparent);
   }
 
   * { box-sizing: border-box; }
@@ -72,27 +65,11 @@
     background: var(--bg);
     color: var(--ink);
     font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
-    /* rem, not px, so the reader's own text-size setting still scales the page */
     font-size: 1.0625rem;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     font-optical-sizing: auto;
-    /* no 300ms double-tap-zoom delay on the tap path */
     touch-action: manipulation;
-  }
-
-  .wrap {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 0 28px;
-  }
-
-  .stamp {
-    font-family: "Space Mono", monospace;
-    font-size: 12.5px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
   }
 
   h1, h2, h3 {
@@ -101,101 +78,117 @@
     text-wrap: balance;
     margin: 0;
   }
+  h1 { letter-spacing: -0.024em; }
+  h2 { letter-spacing: -0.015em; }
+  h3 { letter-spacing: -0.008em; }
 
-  /* ---------- Hero ---------- */
-  header.hero {
-    padding: 72px 0 52px;
-    border-bottom: 1px solid var(--rule);
-  }
-  header.hero .stamp { display: block; margin-bottom: 22px; }
-  header.hero h1 {
-    font-size: clamp(2.3rem, 5.2vw, 3.4rem);
-    line-height: 1.04;
-    letter-spacing: -0.022em;
-  }
-  header.hero .lede {
-    margin-top: 22px;
-    max-width: 34em;
-    font-size: 1.15rem;
-    line-height: 1.55;
-    color: var(--ink-soft);
-  }
-  .underline {
-    margin-top: 30px;
-    height: 3px;
-    width: 84px;
-    background: var(--accent);
-  }
-
-  /* ---------- Sections ---------- */
-  section {
-    padding: 48px 0;
-    border-bottom: 1px solid var(--rule);
-  }
-  section:last-of-type { border-bottom: none; }
-
-  .section-head {
-    display: flex;
-    align-items: baseline;
-    gap: 16px;
-    margin-bottom: 24px;
-  }
-  .section-head .stamp { white-space: nowrap; }
-  .section-head .rule-fill {
-    flex: 1;
-    height: 1px;
-    background: var(--rule-strong);
-  }
-
-  section h2 {
-    font-size: 1.6rem;
-    margin-bottom: 16px;
-  }
-  section h3 {
-    font-size: 1.12rem;
-    margin-top: 26px;
-    margin-bottom: 8px;
-  }
-
-  section p, section li {
-    max-width: 40em;
-    color: var(--ink-soft);
-    font-size: 1.04rem;
-  }
-  section p + p { margin-top: 14px; }
-
-  ul { padding-left: 20px; margin: 12px 0; }
-  li + li { margin-top: 9px; }
-  li strong, p strong { color: var(--ink); font-weight: 600; }
-
+  p { margin: 0; }
   a { color: var(--accent); }
   a:hover { color: var(--accent-strong); }
   a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
-  /* ---------- Contact ---------- */
-  .contact-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 40px;
-    margin-top: 24px;
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+  .wrap-narrow { max-width: 680px; margin: 0 auto; padding: 0 28px; }
+
+  /* ---------- Site nav ---------- */
+  nav.site {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: color-mix(in srgb, var(--bg) 72%, transparent);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
   }
-  .contact-item .stamp { display: block; margin-bottom: 8px; }
+  nav.site::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; top: 100%;
+    height: 14px;
+    background: linear-gradient(to bottom, color-mix(in srgb, var(--bg) 65%, transparent), transparent);
+    pointer-events: none;
+  }
+  nav.site .wrap { display: flex; align-items: center; gap: 26px; padding-top: 14px; padding-bottom: 14px; }
+  .brand {
+    display: flex; align-items: center; gap: 10px;
+    font-family: "Zilla Slab", Georgia, serif; font-weight: 700; font-size: 1.05rem;
+    color: var(--ink); text-decoration: none; letter-spacing: -0.01em;
+  }
+  .brand img { width: 26px; height: 26px; border-radius: 7px; display: block; }
+  nav.site .links { margin-left: auto; display: flex; align-items: center; gap: 24px; }
+  nav.site .links a {
+    position: relative;
+    font-size: 0.92rem; font-weight: 500; color: var(--ink-soft); text-decoration: none;
+  }
+  nav.site .links a:hover { color: var(--ink); }
+  nav.site .links a::before { content: ""; position: absolute; inset: -14px -8px; }
+  .nav-cta {
+    background: var(--accent); color: var(--on-accent) !important;
+    padding: 9px 17px; border-radius: 8px; font-weight: 600; font-size: 0.9rem !important;
+  }
+  .nav-cta:hover { background: var(--accent-strong); color: var(--on-accent) !important; }
+  @media (max-width: 760px) { nav.site .links a.hide-sm { display: none; } }
+
+  .brand, nav.site .links a, .foot-col a { -webkit-tap-highlight-color: transparent; }
+  @media (prefers-reduced-motion: no-preference) {
+    .brand, nav.site .links a, .foot-col a {
+      transition: transform 100ms ease-out, color 100ms ease-out, background 150ms ease;
+    }
+    .brand:active, nav.site .links a:active, .foot-col a:active { transform: scale(0.97); }
+  }
+
+  nav.site .links a[aria-current="page"] { color: var(--accent); }
+
+  /* ---------- Page ---------- */
+  .page-head { padding: 78px 0 10px; }
+  .page-head h1 { font-size: clamp(2.2rem, 4vw, 3rem); line-height: 1.05; }
+  .page-head .lede { margin-top: 20px; font-size: 1.16rem; line-height: 1.5; color: var(--ink-soft); }
+
+  .prose p { color: var(--ink-soft); font-size: 1.05rem; }
+  .prose p + p { margin-top: 18px; }
+  .prose h2 { margin-top: 52px; font-size: 1.5rem; }
+  .prose h2:first-child { margin-top: 0; }
+  .prose h2 + p { margin-top: 14px; }
+  .prose strong { color: var(--ink); font-weight: 600; }
+
+  .prose { padding: 34px 0 20px; }
+  .prose-tail { padding-bottom: 92px; }
+
+  .contact-row { display: flex; flex-wrap: wrap; gap: 38px; margin-top: 24px; }
+  .contact-item .label {
+    display: block; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--accent); font-weight: 600; margin-bottom: 7px;
+  }
   .contact-item a, .contact-item span.value {
-    font-family: "Zilla Slab", Georgia, serif;
-    font-size: 1.25rem;
-    color: var(--ink);
-    text-decoration: none;
-    border-bottom: 1px solid var(--rule-strong);
-    padding-bottom: 2px;
+    font-family: "Zilla Slab", Georgia, serif; font-size: 1.2rem; color: var(--ink);
+    text-decoration: none; border-bottom: 1px solid var(--rule-strong); padding-bottom: 2px;
   }
-  .contact-item a:hover { border-bottom-color: var(--accent); color: var(--accent); }
-  .contact-item a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+  .contact-item a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* ---------- FAQ ---------- */
+  .faq-list { margin-top: 26px; border-top: 1px solid var(--rule); }
+  .faq-list details { border-bottom: 1px solid var(--rule); }
+  .faq-list summary {
+    cursor: pointer; padding: 18px 0; list-style: none;
+    font-family: "Zilla Slab", Georgia, serif; font-size: 1.1rem; letter-spacing: -0.008em;
+    display: flex; justify-content: space-between; gap: 16px; align-items: center;
+  }
+  .faq-list summary::-webkit-details-marker { display: none; }
+  .faq-list summary::after { content: "+"; color: var(--accent); font-family: "Archivo", sans-serif; font-weight: 600; flex: none; }
+  .faq-list details[open] summary::after { content: "\2013"; }
+  .faq-list .answer { padding: 0 0 20px; color: var(--ink-soft); max-width: 62ch; }
+  .faq-list .answer p + p { margin-top: 14px; }
+
+  /* ---------- Press feedback, matching the chrome ---------- */
+  .faq-list summary, .contact-item a { -webkit-tap-highlight-color: transparent; }
+  @media (prefers-reduced-motion: no-preference) {
+    .faq-list summary, .contact-item a { transition: transform 100ms ease-out, color 100ms ease-out, background 150ms ease; }
+    .faq-list summary:active, .contact-item a:active { transform: scale(0.97); }
+  }
 
   /* ---------- Footer ---------- */
-  footer { background: var(--rock-950); color: var(--sand-50); padding: 58px 0 38px; margin-top: 40px; }
+  footer { background: var(--rock-950); color: var(--sand-50); padding: 58px 0 38px; }
   footer a { color: rgba(246,242,233,0.68); text-decoration: none; }
   footer a:hover { color: #d8672f; }
-  footer .wrap { display: block; }
   .foot-grid { display: flex; flex-wrap: wrap; gap: 36px; }
   .foot-about { flex: 1.6 1 280px; min-width: 0; }
   .foot-brand { display: flex; align-items: center; gap: 10px; font-family: "Zilla Slab", Georgia, serif; font-weight: 700; color: var(--sand-50); }
@@ -216,65 +209,6 @@
     font-size: 0.86rem; color: rgba(246,242,233,0.45);
   }
 
-  /* ---------- Site nav: translucent chrome, content scrolls under ---------- */
-  nav.site {
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    background: color-mix(in srgb, var(--bg) 72%, transparent);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-  }
-  /* scroll edge, not a hard rule: separation only where chrome overlaps content */
-  nav.site::after {
-    content: "";
-    position: absolute;
-    left: 0; right: 0; top: 100%;
-    height: 14px;
-    background: linear-gradient(to bottom, color-mix(in srgb, var(--bg) 65%, transparent), transparent);
-    pointer-events: none;
-  }
-  nav.site .wrap { display: flex; align-items: center; gap: 26px; padding: 14px 28px; }
-  .brand {
-    display: flex; align-items: center; gap: 10px;
-    font-family: "Zilla Slab", Georgia, serif; font-weight: 700; font-size: 1.05rem;
-    color: var(--ink); text-decoration: none; letter-spacing: -0.01em;
-  }
-  .brand img { width: 26px; height: 26px; border-radius: 7px; display: block; }
-  nav.site .links { margin-left: auto; display: flex; align-items: center; gap: 24px; }
-  nav.site .links a {
-    position: relative;
-    font-size: 0.92rem; font-weight: 500; color: var(--ink-soft); text-decoration: none;
-  }
-  nav.site .links a:hover { color: var(--ink); }
-  nav.site .links a[aria-current="page"] { color: var(--accent); }
-  /* invisible hit padding: ~44px touch target without changing the visual box */
-  nav.site .links a::before { content: ""; position: absolute; inset: -14px -8px; }
-  .nav-cta {
-    background: var(--accent); color: var(--on-accent) !important;
-    padding: 9px 17px; border-radius: 8px; font-weight: 600; font-size: 0.9rem !important;
-  }
-  .nav-cta:hover { background: var(--accent-strong); color: var(--on-accent) !important; }
-  @media (max-width: 760px) { nav.site .links a.hide-sm { display: none; } }
-
-  /* ---------- Press feedback: instant, on press, not on release ---------- */
-  a.badge, nav.site .links a, .brand, .foot-col a, .contact-item a {
-    -webkit-tap-highlight-color: transparent;
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    a.badge, nav.site .links a, .brand, .foot-col a, .contact-item a {
-      transition: transform 100ms ease-out, color 100ms ease-out, border-color 150ms ease, background 150ms ease;
-    }
-    a.badge:active, nav.site .links a:active, .brand:active, .foot-col a:active, .contact-item a:active {
-      transform: scale(0.97);
-    }
-  }
-
-  /* ---------- Size-specific tracking: tighten as type grows, body stays at 0 ---------- */
-  h2 { letter-spacing: -0.012em; }
-  h3 { letter-spacing: -0.006em; }
-
-  /* ---------- Transparency and contrast preferences ---------- */
   @media (prefers-reduced-transparency: reduce) {
     nav.site {
       background: var(--bg);
@@ -293,7 +227,6 @@
     }
     nav.site::after { display: none; }
   }
-  @media (max-width: 420px) { nav.site .wrap { gap: 14px; padding: 14px 20px; } }
 </style>
 </head>
 <body>
@@ -311,59 +244,56 @@
   </div>
 </nav>
 
-<header class="hero">
-  <div class="wrap">
-    <span class="stamp">Screen Night &mdash; iOS</span>
+<header class="page-head">
+  <div class="wrap-narrow">
     <h1>Support</h1>
-    <p class="lede">Questions, bug reports, or trouble with your account &mdash; here's how to reach us and a few common answers before you do.</p>
-    <div class="underline"></div>
+    <p class="lede">Questions, bug reports, or trouble with your account &mdash; here's how to reach us, and a few common answers before you do.</p>
   </div>
 </header>
 
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="stamp">01 &mdash; Contact us</span>
-      <div class="rule-fill"></div>
-    </div>
-    <h2>The fastest way to reach us.</h2>
+<main class="prose prose-tail">
+  <div class="wrap-narrow">
+    <h2>The fastest way to reach us</h2>
     <p>Email us directly, or use <strong>Settings &rarr; Send Feedback or Report a Bug</strong> inside the app, which includes your app and iOS version so we can help faster.</p>
     <div class="contact-row">
       <div class="contact-item">
-        <span class="stamp">Email</span>
+        <span class="label">Email</span>
         <a href="mailto:mike@redrockappsllc.com">mike@redrockappsllc.com</a>
       </div>
     </div>
-  </div>
-</section>
 
-<section>
-  <div class="wrap">
-    <div class="section-head">
-      <span class="stamp">02 &mdash; Common questions</span>
-      <div class="rule-fill"></div>
+    <h2>Common questions</h2>
+    <div class="faq-list">
+      <details>
+        <summary>How do I reset my password?</summary>
+        <div class="answer">Tap <strong>Forgot password?</strong> on the sign-in screen. We'll email a 6-digit code to confirm it's you, then let you set a new one. If you originally signed up with Google or Facebook, there's no password to reset &mdash; use that same sign-in button instead.</div>
+      </details>
+      <details>
+        <summary>How do I delete my account?</summary>
+        <div class="answer">
+          <p>Go to <strong>Settings &rarr; Delete Account</strong> inside the app and confirm. This permanently removes your account, watchlist, watched episodes, and ratings, and can't be undone. If an Apple subscription is still active on the account, cancel it first through your Apple ID subscription settings &mdash; deleting the app account doesn't cancel Apple billing, since they're separate systems.</p>
+          <p>If you'd rather not use the app to do it, email us from the address on your account and we'll delete it for you.</p>
+        </div>
+      </details>
+      <details>
+        <summary>How do I cancel my subscription?</summary>
+        <div class="answer">Subscriptions are billed and managed by Apple, not by us. On your device, go to <strong>Settings &rarr; [your name] &rarr; Subscriptions</strong> to view, change, or cancel.</div>
+      </details>
+      <details>
+        <summary>A show or episode looks wrong.</summary>
+        <div class="answer">Show and episode data comes from <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze</a>, a third-party database. If a title, air date, or artwork looks off, it's usually accurate to what TVmaze has on file. Let us know anyway &mdash; sometimes there's a real app-side bug behind what looks like a data issue.</div>
+      </details>
+      <details>
+        <summary>Where's my data stored?</summary>
+        <div class="answer">See our <a href="/privacy/">Privacy Policy</a> for the full picture of what's collected and where it goes.</div>
+      </details>
+      <details>
+        <summary>How does Screen Night compare with other TV trackers?</summary>
+        <div class="answer">See <a href="/compare/">Screen Night next to Trakt, Serializd, Sofa Time and JustWatch</a>: price, ads, tracking, who sees your activity, and platforms.</div>
+      </details>
     </div>
-
-    <h3>How do I reset my password?</h3>
-    <p>Tap <strong>Forgot password?</strong> on the sign-in screen. We'll email a 6-digit code to confirm it's you, then let you set a new one. If you originally signed up with Google or Facebook, there's no password to reset &mdash; use that same sign-in button instead.</p>
-
-    <h3>How do I delete my account?</h3>
-    <p>Go to <strong>Settings &rarr; Delete Account</strong> inside the app and confirm. This permanently removes your account, watchlist, watched episodes, and ratings, and can't be undone. If an Apple subscription is still active on the account, cancel it first through your Apple ID subscription settings &mdash; deleting the app account doesn't cancel Apple billing, since they're separate systems.</p>
-    <p>If you'd rather not use the app to do it, email us from the address on your account and we'll delete it for you.</p>
-
-    <h3>How do I cancel my subscription?</h3>
-    <p>Subscriptions are billed and managed by Apple, not by us. On your device, go to <strong>Settings &rarr; [your name] &rarr; Subscriptions</strong> to view, change, or cancel.</p>
-
-    <h3>A show or episode looks wrong.</h3>
-    <p>Show and episode data comes from <a href="https://www.tvmaze.com" target="_blank" rel="noopener">TVmaze</a>, a third-party database. If a title, air date, or artwork looks off, it's usually accurate to what TVmaze has on file. Let us know anyway &mdash; sometimes there's a real app-side bug behind what looks like a data issue.</p>
-
-    <h3>Where's my data stored?</h3>
-    <p>See our <a href="/privacy/">Privacy Policy</a> for the full picture of what's collected and where it goes.</p>
-
-    <h3>How does Screen Night compare with other TV trackers?</h3>
-    <p>See <a href="/compare/">Screen Night next to Trakt, Serializd, Sofa Time and JustWatch</a>: price, ads, tracking, who sees your activity, and platforms.</p>
   </div>
-</section>
+</main>
 
 <footer>
   <div class="wrap">
