@@ -22,7 +22,6 @@
     --sand-50: #f6f2e9;
     --sienna: #b8451f;
     --sienna-dim: #9a3a19;
-    --dusk: #47606c;
 
     --bg: var(--sand-50);
     --bg-raised: var(--sand-100);
@@ -30,11 +29,9 @@
     --ink-soft: var(--rock-600);
     --accent: var(--sienna);
     --accent-strong: var(--sienna-dim);
-    --secondary: var(--dusk);
-    --rule: color-mix(in srgb, var(--rock-950) 16%, transparent);
-    --rule-strong: color-mix(in srgb, var(--rock-950) 30%, transparent);
-    --frame-bg: var(--sand-100);
-    --shadow: color-mix(in srgb, var(--rock-950) 10%, transparent);
+    --on-accent: #ffffff;
+    --rule: color-mix(in srgb, var(--rock-950) 14%, transparent);
+    --rule-strong: color-mix(in srgb, var(--rock-950) 28%, transparent);
   }
 
   @media (prefers-color-scheme: dark) {
@@ -45,11 +42,9 @@
       --ink-soft: color-mix(in srgb, var(--sand-50) 62%, var(--rock-950));
       --accent: #d8672f;
       --accent-strong: #e2814f;
-      --secondary: #8fb2c2;
-      --rule: color-mix(in srgb, var(--sand-50) 18%, transparent);
-      --rule-strong: color-mix(in srgb, var(--sand-50) 32%, transparent);
-      --frame-bg: var(--rock-800);
-      --shadow: color-mix(in srgb, black 40%, transparent);
+      --on-accent: #17130f;
+      --rule: color-mix(in srgb, var(--sand-50) 16%, transparent);
+      --rule-strong: color-mix(in srgb, var(--sand-50) 30%, transparent);
     }
   }
 
@@ -60,11 +55,9 @@
     --ink-soft: color-mix(in srgb, var(--sand-50) 62%, var(--rock-950));
     --accent: #d8672f;
     --accent-strong: #e2814f;
-    --secondary: #8fb2c2;
-    --rule: color-mix(in srgb, var(--sand-50) 18%, transparent);
-    --rule-strong: color-mix(in srgb, var(--sand-50) 32%, transparent);
-    --frame-bg: var(--rock-800);
-    --shadow: color-mix(in srgb, black 40%, transparent);
+    --on-accent: #17130f;
+    --rule: color-mix(in srgb, var(--sand-50) 16%, transparent);
+    --rule-strong: color-mix(in srgb, var(--sand-50) 30%, transparent);
   }
 
   * { box-sizing: border-box; }
@@ -74,27 +67,11 @@
     background: var(--bg);
     color: var(--ink);
     font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
-    /* rem, not px, so the reader's own text-size setting still scales the page */
     font-size: 1.0625rem;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     font-optical-sizing: auto;
-    /* no 300ms double-tap-zoom delay on the tap path */
     touch-action: manipulation;
-  }
-
-  .wrap {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 0 28px;
-  }
-
-  .stamp {
-    font-family: "Space Mono", monospace;
-    font-size: 12.5px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
   }
 
   h1, h2, h3 {
@@ -103,12 +80,149 @@
     text-wrap: balance;
     margin: 0;
   }
+  h1 { letter-spacing: -0.024em; }
+  h2 { letter-spacing: -0.015em; }
+  h3 { letter-spacing: -0.008em; }
+
+  p { margin: 0; }
+  a { color: var(--accent); }
+  a:hover { color: var(--accent-strong); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+  .wrap-narrow { max-width: 680px; margin: 0 auto; padding: 0 28px; }
+
+  /* ---------- Site nav ---------- */
+  nav.site {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: color-mix(in srgb, var(--bg) 72%, transparent);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+  }
+  nav.site::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; top: 100%;
+    height: 14px;
+    background: linear-gradient(to bottom, color-mix(in srgb, var(--bg) 65%, transparent), transparent);
+    pointer-events: none;
+  }
+  nav.site .wrap { display: flex; align-items: center; gap: 26px; padding-top: 14px; padding-bottom: 14px; }
+  .brand {
+    display: flex; align-items: center; gap: 10px;
+    font-family: "Zilla Slab", Georgia, serif; font-weight: 700; font-size: 1.05rem;
+    color: var(--ink); text-decoration: none; letter-spacing: -0.01em;
+  }
+  .brand img { width: 26px; height: 26px; border-radius: 7px; display: block; }
+  nav.site .links { margin-left: auto; display: flex; align-items: center; gap: 24px; }
+  nav.site .links a {
+    position: relative;
+    font-size: 0.92rem; font-weight: 500; color: var(--ink-soft); text-decoration: none;
+  }
+  nav.site .links a:hover { color: var(--ink); }
+  nav.site .links a::before { content: ""; position: absolute; inset: -14px -8px; }
+  .nav-cta {
+    background: var(--accent); color: var(--on-accent) !important;
+    padding: 9px 17px; border-radius: 8px; font-weight: 600; font-size: 0.9rem !important;
+  }
+  .nav-cta:hover { background: var(--accent-strong); color: var(--on-accent) !important; }
+  @media (max-width: 760px) { nav.site .links a.hide-sm { display: none; } }
+
+  .brand, nav.site .links a, .foot-col a { -webkit-tap-highlight-color: transparent; }
+  @media (prefers-reduced-motion: no-preference) {
+    .brand, nav.site .links a, .foot-col a {
+      transition: transform 100ms ease-out, color 100ms ease-out, background 150ms ease;
+    }
+    .brand:active, nav.site .links a:active, .foot-col a:active { transform: scale(0.97); }
+  }
+
+  /* ---------- Extra tokens these two link pages need ---------- */
+  :root {
+    --dusk: #47606c;
+    --secondary: var(--dusk);
+    --frame-bg: var(--sand-100);
+    --shadow: color-mix(in srgb, var(--rock-950) 10%, transparent);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --secondary: #8fb2c2;
+      --frame-bg: var(--rock-800);
+      --shadow: color-mix(in srgb, black 40%, transparent);
+    }
+  }
+  :root[data-theme="dark"] {
+    --secondary: #8fb2c2;
+    --frame-bg: var(--rock-800);
+    --shadow: color-mix(in srgb, black 40%, transparent);
+  }
+
+  /* ---------- Link landing page ---------- */
+  /* This page's script shows and hides nearly everything with the hidden
+     attribute, and ANY display rule silently beats it. One guard for the whole
+     page, so a later rule can't reintroduce that bug. */
+  [hidden] { display: none !important; }
+
+  main { padding: 62px 0 56px; }
+  main .wrap { max-width: 720px; }
+
+  .eyebrow {
+    display: block; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--accent); font-weight: 600; margin-bottom: 20px;
+  }
+  .eyebrow-soft { color: var(--ink-soft); margin-bottom: 14px; }
+
+  .title-row { display: flex; align-items: center; gap: 18px; }
+  .app-icon { width: 72px; height: 72px; border-radius: 16px; flex: none; box-shadow: 0 2px 10px var(--shadow); }
+  .poster {
+    width: 96px; aspect-ratio: 2 / 3; border-radius: 10px; object-fit: cover; flex: none;
+    background: var(--frame-bg); box-shadow: 0 2px 10px var(--shadow);
+  }
+  h1 { font-size: clamp(2rem, 5.2vw, 2.8rem); line-height: 1.06; }
+  .meta { margin-top: 8px; color: var(--ink-soft); font-size: 0.98rem; }
+  .lede { margin: 24px 0 0; max-width: 32em; font-size: 1.12rem; line-height: 1.55; color: var(--ink-soft); }
+
+  .cta {
+    display: inline-block; margin-top: 30px; padding: 15px 26px; border-radius: 12px;
+    background: var(--accent); color: var(--on-accent); text-decoration: none;
+    font-weight: 600; font-size: 1.02rem;
+  }
+  .cta:hover { background: var(--accent-strong); color: var(--on-accent); }
+  .cta:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .copy-note { margin: 14px 0 0; max-width: 32em; font-size: 0.95rem; color: var(--ink-soft); }
+
+  .steps {
+    margin-top: 40px; padding: 24px 26px; border-radius: 14px;
+    background: var(--bg-raised); max-width: 36em;
+  }
+  .steps ol { margin: 0; padding-left: 20px; color: var(--ink-soft); }
+  .steps li + li { margin-top: 9px; }
+  /* no :first-of-type reset here: on /i/ the first <p> follows the <ol> and
+     needs the gap. Against the eyebrow on /s/ the two margins collapse. */
+  .steps p { color: var(--ink-soft); margin: 14px 0 0; font-size: 0.98rem; }
+  .steps strong { color: var(--ink); font-weight: 600; }
+
+  .open-app { display: inline-block; margin-top: 26px; color: var(--secondary); font-weight: 600; }
+  .credit { margin-top: 22px; font-size: 0.85rem; color: var(--ink-soft); }
+
+  .cta, .open-app { -webkit-tap-highlight-color: transparent; }
+  @media (prefers-reduced-motion: no-preference) {
+    .cta, .open-app { transition: transform 100ms ease-out, color 100ms ease-out, background 150ms ease; }
+    .cta:active, .open-app:active { transform: scale(0.97); }
+  }
+
+  @media (max-width: 620px) {
+    main { padding-top: 44px; }
+    .title-row { gap: 14px; }
+    .app-icon { width: 60px; height: 60px; }
+    .steps { padding: 20px 20px; }
+  }
 
   /* ---------- Footer ---------- */
-  footer { background: var(--rock-950); color: var(--sand-50); padding: 58px 0 38px; margin-top: 40px; }
+  footer { background: var(--rock-950); color: var(--sand-50); padding: 58px 0 38px; }
   footer a { color: rgba(246,242,233,0.68); text-decoration: none; }
   footer a:hover { color: #d8672f; }
-  footer .wrap { display: block; }
   .foot-grid { display: flex; flex-wrap: wrap; gap: 36px; }
   .foot-about { flex: 1.6 1 280px; min-width: 0; }
   .foot-brand { display: flex; align-items: center; gap: 10px; font-family: "Zilla Slab", Georgia, serif; font-weight: 700; color: var(--sand-50); }
@@ -129,65 +243,6 @@
     font-size: 0.86rem; color: rgba(246,242,233,0.45);
   }
 
-  /* ---------- Site nav: translucent chrome, content scrolls under ---------- */
-  nav.site {
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    background: color-mix(in srgb, var(--bg) 72%, transparent);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-  }
-  /* scroll edge, not a hard rule: separation only where chrome overlaps content */
-  nav.site::after {
-    content: "";
-    position: absolute;
-    left: 0; right: 0; top: 100%;
-    height: 14px;
-    background: linear-gradient(to bottom, color-mix(in srgb, var(--bg) 65%, transparent), transparent);
-    pointer-events: none;
-  }
-  nav.site .wrap { display: flex; align-items: center; gap: 26px; padding: 14px 28px; }
-  .brand {
-    display: flex; align-items: center; gap: 10px;
-    font-family: "Zilla Slab", Georgia, serif; font-weight: 700; font-size: 1.05rem;
-    color: var(--ink); text-decoration: none; letter-spacing: -0.01em;
-  }
-  .brand img { width: 26px; height: 26px; border-radius: 7px; display: block; }
-  nav.site .links { margin-left: auto; display: flex; align-items: center; gap: 24px; }
-  nav.site .links a {
-    position: relative;
-    font-size: 0.92rem; font-weight: 500; color: var(--ink-soft); text-decoration: none;
-  }
-  nav.site .links a:hover { color: var(--ink); }
-  nav.site .links a[aria-current="page"] { color: var(--accent); }
-  /* invisible hit padding: ~44px touch target without changing the visual box */
-  nav.site .links a::before { content: ""; position: absolute; inset: -14px -8px; }
-  .nav-cta {
-    background: var(--accent); color: var(--on-accent) !important;
-    padding: 9px 17px; border-radius: 8px; font-weight: 600; font-size: 0.9rem !important;
-  }
-  .nav-cta:hover { background: var(--accent-strong); color: var(--on-accent) !important; }
-  @media (max-width: 760px) { nav.site .links a.hide-sm { display: none; } }
-
-  /* ---------- Press feedback: instant, on press, not on release ---------- */
-  a.badge, nav.site .links a, .brand, .foot-col a, .contact-item a {
-    -webkit-tap-highlight-color: transparent;
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    a.badge, nav.site .links a, .brand, .foot-col a, .contact-item a {
-      transition: transform 100ms ease-out, color 100ms ease-out, border-color 150ms ease, background 150ms ease;
-    }
-    a.badge:active, nav.site .links a:active, .brand:active, .foot-col a:active, .contact-item a:active {
-      transform: scale(0.97);
-    }
-  }
-
-  /* ---------- Size-specific tracking: tighten as type grows, body stays at 0 ---------- */
-  h2 { letter-spacing: -0.012em; }
-  h3 { letter-spacing: -0.006em; }
-
-  /* ---------- Transparency and contrast preferences ---------- */
   @media (prefers-reduced-transparency: reduce) {
     nav.site {
       background: var(--bg);
@@ -206,39 +261,6 @@
     }
     nav.site::after { display: none; }
   }
-  @media (max-width: 420px) { nav.site .wrap { gap: 14px; padding: 14px 20px; } }
-
-  a { color: var(--accent); }
-  a:hover { color: var(--accent-strong); }
-  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-
-  /* ---------- Invite ---------- */
-  main { padding: 56px 0 44px; border-bottom: 1px solid var(--rule); }
-  main .stamp { display: block; margin-bottom: 20px; }
-  .title-row { display: flex; align-items: center; gap: 18px; }
-  .app-icon { width: 72px; height: 72px; border-radius: 16px; flex: none; box-shadow: 0 2px 10px var(--shadow); }
-  h1 { font-size: clamp(2rem, 6vw, 2.9rem); line-height: 1.05; letter-spacing: -0.022em; }
-  .lede { margin: 22px 0 0; max-width: 32em; font-size: 1.12rem; line-height: 1.55; color: var(--ink-soft); }
-  .cta {
-    display: inline-block; margin-top: 30px; padding: 15px 26px; border-radius: 12px;
-    background: var(--accent); color: #fff; text-decoration: none;
-    font-family: "Archivo", "Helvetica Neue", Arial, sans-serif; font-weight: 600; font-size: 1.05rem;
-  }
-  .cta:hover { background: var(--accent-strong); color: #fff; }
-  .cta:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-  .steps { margin-top: 38px; padding-top: 22px; border-top: 1px solid var(--rule); max-width: 34em; }
-  .steps .stamp { color: var(--ink-soft); margin-bottom: 12px; }
-  .steps ol { margin: 0; padding-left: 22px; color: var(--ink-soft); }
-  .steps li + li { margin-top: 8px; }
-  .steps strong { color: var(--ink); font-weight: 600; }
-  .steps p { color: var(--ink-soft); margin: 12px 0 0; font-size: 0.98rem; }
-  .open-app { display: inline-block; margin-top: 26px; color: var(--secondary); }
-  .open-app[hidden] { display: none; }
-  .copy-note { margin: 12px 0 0; max-width: 32em; font-size: 0.95rem; color: var(--ink-soft); }
-  .copy-note[hidden] { display: none; }
-  .poster { width: 96px; aspect-ratio: 2 / 3; border-radius: 8px; object-fit: cover; flex: none; background: var(--frame-bg); box-shadow: 0 2px 10px var(--shadow); }
-  .meta { margin-top: 8px; color: var(--ink-soft); font-size: 0.98rem; }
-  .credit { margin-top: 20px; font-size: 0.85rem; color: var(--ink-soft); }
 </style>
 </head>
 <body>
@@ -261,7 +283,7 @@
      show, from TVmaze's public API in the browser (their data is CC BY-SA, hence the credit line). -->
 <main>
   <div class="wrap">
-    <span class="stamp">Screen Night &mdash; a recommendation</span>
+    <span class="eyebrow">Screen Night &mdash; a recommendation</span>
     <div class="title-row">
       <img class="poster" id="poster" alt="" hidden>
       <div>
@@ -274,7 +296,7 @@
     <p class="copy-note" id="copy-note" role="status" hidden>Tapping this also copies your friend's invite, so you can paste it into Screen Night.</p>
 
     <div class="steps">
-      <span class="stamp">Then</span>
+      <span class="eyebrow eyebrow-soft">Then</span>
       <p id="step-paste" hidden>Install Screen Night and sign up, then tap Paste beside &ldquo;Invited by a friend?&rdquo; to connect. If Paste doesn&rsquo;t work, come back here and tap the link below.</p>
       <p id="step-return">Install Screen Night, then come back to this page and tap the link below. It waits while you sign up.</p>
       <p id="connect-note" hidden>You can connect with your friend from there too.</p>
