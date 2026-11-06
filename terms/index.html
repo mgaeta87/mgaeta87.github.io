@@ -184,6 +184,33 @@
     .table-scroll tbody td:first-child { width: 8em; }
   }
 
+  /* ---------- On this page ---------- */
+  .toc { margin-top: 36px; padding: 24px 26px; background: var(--bg-raised); border-radius: 14px; }
+  .toc h2 {
+    font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--ink-soft); font-weight: 600; margin-bottom: 16px;
+  }
+  /* columns, not grid: a numbered list must read DOWN the first column
+     (01-06, then 07-11), and grid would fill across rows (01, 02 / 03, 04) */
+  .toc ol { margin: 0; padding: 0; list-style: none; }
+  @media (min-width: 640px) { .toc ol { columns: 2; column-gap: 34px; } }
+  .toc li { margin: 0 0 11px; break-inside: avoid; }
+  .toc li:last-child { margin-bottom: 0; }
+  .toc a {
+    position: relative; display: inline-flex; gap: 10px; align-items: baseline;
+    color: var(--ink); text-decoration: none; font-size: 0.98rem; line-height: 1.4;
+  }
+  .toc a .n { color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; flex: none; }
+  .toc a:hover, .toc a:hover .n { color: var(--accent); }
+  .toc a::before { content: ""; position: absolute; inset: -9px -6px; }
+  .toc a { -webkit-tap-highlight-color: transparent; }
+  @media (prefers-reduced-motion: no-preference) {
+    .toc a { transition: transform 100ms ease-out, color 100ms ease-out; }
+    .toc a:active { transform: scale(0.97); }
+    html { scroll-behavior: smooth; }
+  }
+
   /* ---------- Footer ---------- */
   footer { background: var(--rock-950); color: var(--sand-50); padding: 58px 0 38px; }
   footer a { color: rgba(246,242,233,0.68); text-decoration: none; }
@@ -251,6 +278,25 @@
 </header>
 
 <main>
+
+  <div class="wrap-narrow">
+    <nav class="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <ol>
+        <li><a href="#the-agreement"><span class="n">01</span><span>The agreement</span></a></li>
+        <li><a href="#your-account"><span class="n">02</span><span>Your account</span></a></li>
+        <li><a href="#subscriptions"><span class="n">03</span><span>Subscriptions</span></a></li>
+        <li><a href="#friends"><span class="n">04</span><span>Friends</span></a></li>
+        <li><a href="#what-you-share"><span class="n">05</span><span>What you share</span></a></li>
+        <li><a href="#show-information"><span class="n">06</span><span>Show information</span></a></li>
+        <li><a href="#fair-use"><span class="n">07</span><span>Fair use</span></a></li>
+        <li><a href="#ending"><span class="n">08</span><span>Ending</span></a></li>
+        <li><a href="#the-legal-part"><span class="n">09</span><span>The legal part</span></a></li>
+        <li><a href="#changes"><span class="n">10</span><span>Changes</span></a></li>
+        <li><a href="#contact"><span class="n">11</span><span>Contact</span></a></li>
+      </ol>
+    </nav>
+  </div>
 
 <section id="the-agreement">
   <div class="wrap-narrow">
