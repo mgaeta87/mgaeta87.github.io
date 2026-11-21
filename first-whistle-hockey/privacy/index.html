@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy &mdash; First Whistle Hockey</title>
+<meta name="description" content="What the First Whistle Hockey page and its channel tool collect, where that information is kept, and how access is removed.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://redrockappsllc.com/first-whistle-hockey/privacy/">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<style>
+  :root {
+    --rock-950: #17130f;
+    --rock-800: #2b241d;
+    --rock-600: #5a5045;
+    --sand-100: #ede6d8;
+    --sand-50: #f6f2e9;
+    --sienna: #b8451f;
+    --sienna-dim: #9a3a19;
+
+    --bg: var(--sand-50);
+    --bg-raised: var(--sand-100);
+    --ink: var(--rock-950);
+    --ink-soft: var(--rock-600);
+    --accent: var(--sienna);
+    --accent-strong: var(--sienna-dim);
+    --on-accent: #ffffff;
+    --rule: color-mix(in srgb, var(--rock-950) 14%, transparent);
+    --rule-strong: color-mix(in srgb, var(--rock-950) 28%, transparent);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: var(--rock-950);
+      --bg-raised: var(--rock-800);
+      --ink: var(--sand-50);
+      --ink-soft: color-mix(in srgb, var(--sand-50) 62%, var(--rock-950));
+      --accent: #d8672f;
+      --accent-strong: #e2814f;
+      --on-accent: #17130f;
+      --rule: color-mix(in srgb, var(--sand-50) 16%, transparent);
+      --rule-strong: color-mix(in srgb, var(--sand-50) 30%, transparent);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: var(--rock-950);
+    --bg-raised: var(--rock-800);
+    --ink: var(--sand-50);
+    --ink-soft: color-mix(in srgb, var(--sand-50) 62%, var(--rock-950));
+    --accent: #d8672f;
+    --accent-strong: #e2814f;
+    --on-accent: #17130f;
+    --rule: color-mix(in srgb, var(--sand-50) 16%, transparent);
+    --rule-strong: color-mix(in srgb, var(--sand-50) 30%, transparent);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    font-size: 1.0625rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    font-optical-sizing: auto;
+    touch-action: manipulation;
+  }
+
+  h1, h2, h3 {
+    font-family: "Zilla Slab", Georgia, serif;
+    font-weight: 600;
+    text-wrap: balance;
+    margin: 0;
+  }
+  h1 { letter-spacing: -0.024em; }
+  h2 { letter-spacing: -0.015em; }
+  h3 { letter-spacing: -0.008em; }
+
+  p { margin: 0; }
+  a { color: var(--accent); }
+  a:hover { color: var(--accent-strong); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+  .wrap-narrow { max-width: 680px; margin: 0 auto; padding: 0 28px; }
+
+  /* ---------- Site nav ---------- */
+  nav.site {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: color-mix(in srgb, var(--bg) 72%, transparent);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+  }
+  nav.site::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; top: 100%;
+    height: 14px;
+    background: linear-gradient(to bottom, color-mix(in srgb, var(--bg) 65%, transparent), transparent);
+    pointer-events: none;
+  }
+  nav.site .wrap { display: flex; align-items: center; gap: 26px; padding-top: 14px; padding-bottom: 14px; }
+  .brand {
+    display: flex; align-items: center; gap: 10px;
+    font-family: "Zilla Slab", Georgia, serif; font-weight: 700; font-size: 1.05rem;
+    color: var(--ink); text-decoration: none; letter-spacing: -0.01em;
+  }
+  .brand img { width: 26px; height: 26px; border-radius: 7px; display: block; }
+  nav.site .links { margin-left: auto; display: flex; align-items: center; gap: 24px; }
+  nav.site .links a {
+    position: relative;
+    font-size: 0.92rem; font-weight: 500; color: var(--ink-soft); text-decoration: none;
+  }
+  nav.site .links a:hover { color: var(--ink); }
+  nav.site .links a::before { content: ""; position: absolute; inset: -14px -8px; }
+  .nav-cta {
+    background: var(--accent); color: var(--on-accent) !important;
+    padding: 9px 17px; border-radius: 8px; font-weight: 600; font-size: 0.9rem !important;
+  }
+  .nav-cta:hover { background: var(--accent-strong); color: var(--on-accent) !important; }
+  @media (max-width: 760px) { nav.site .links a.hide-sm { display: none; } }
+
+  .brand, nav.site .links a, .foot-col a { -webkit-tap-highlight-color: transparent; }
+  @media (prefers-reduced-motion: no-preference) {
+    .brand, nav.site .links a, .foot-col a {
+      transition: transform 100ms ease-out, color 100ms ease-out, background 150ms ease;
+    }
+    .brand:active, nav.site .links a:active, .foot-col a:active { transform: scale(0.97); }
+  }
+
+  /* ---------- Page ---------- */
+  .page-head { padding: 78px 0 10px; }
+  .page-head h1 { font-size: clamp(2.2rem, 4vw, 3rem); line-height: 1.05; }
+  .page-head .lede { margin-top: 20px; font-size: 1.12rem; line-height: 1.55; color: var(--ink-soft); }
+  .page-head .effective {
+    margin-top: 22px; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--ink-soft); font-weight: 600;
+  }
+
+  /* a legal section: its NAME as a micro-label, its summary as the heading */
+  /* scroll-margin clears the sticky nav when a #clause link jumps here */
+  section { padding: 46px 0 0; scroll-margin-top: 84px; }
+  section:last-of-type { padding-bottom: 92px; }
+  .sec-label {
+    font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--accent); font-weight: 600; margin-bottom: 10px;
+  }
+  section h2 { font-size: 1.5rem; }
+  section h3 { font-size: 1.12rem; margin-top: 30px; }
+  section h2 + p, section h3 + p { margin-top: 14px; }
+  section p + p, section p + ul, section ul + p { margin-top: 16px; }
+  section p, section li { color: var(--ink-soft); }
+  section li strong, section p strong { color: var(--ink); font-weight: 600; }
+  section ul { margin: 16px 0 0; padding-left: 20px; }
+  section li + li { margin-top: 10px; }
+
+  /* ---------- Tables: text keeps the narrow measure, these break out ---------- */
+  .table-scroll {
+    margin: 22px -28px 0;
+    padding: 0 28px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+  .table-scroll table {
+    border-collapse: collapse;
+    min-width: 640px;
+    width: 100%;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .table-scroll th, .table-scroll td {
+    text-align: left;
+    vertical-align: top;
+    padding: 13px 15px;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink-soft);
+  }
+  .table-scroll thead th {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    border-bottom: 1px solid var(--rule-strong);
+    padding-bottom: 11px;
+  }
+  .table-scroll tbody td:first-child {
+    color: var(--ink);
+    font-weight: 600;
+    width: 13em;
+  }
+
+  .contact-row { display: flex; flex-wrap: wrap; gap: 38px; margin-top: 24px; }
+  .contact-item .label {
+    display: block; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--accent); font-weight: 600; margin-bottom: 7px;
+  }
+  .contact-item a, .contact-item span.value {
+    font-family: "Zilla Slab", Georgia, serif; font-size: 1.2rem; color: var(--ink);
+    text-decoration: none; border-bottom: 1px solid var(--rule-strong); padding-bottom: 2px;
+  }
+  .contact-item a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  .contact-item a { -webkit-tap-highlight-color: transparent; }
+  @media (prefers-reduced-motion: no-preference) {
+    .contact-item a { transition: transform 100ms ease-out, color 100ms ease-out; }
+    .contact-item a:active { transform: scale(0.97); }
+  }
+
+  @media (max-width: 620px) {
+    .page-head { padding-top: 54px; }
+    .table-scroll { margin-left: -20px; margin-right: -20px; padding: 0 20px; }
+    .table-scroll tbody td:first-child { width: 8em; }
+  }
+
+  /* ---------- On this page ---------- */
+  .toc { margin-top: 36px; padding: 24px 26px; background: var(--bg-raised); border-radius: 14px; }
+  .toc h2 {
+    font-family: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--ink-soft); font-weight: 600; margin-bottom: 16px;
+  }
+  /* columns, not grid: a numbered list must read DOWN the first column
+     (01-06, then 07-11), and grid would fill across rows (01, 02 / 03, 04) */
+  .toc ol { margin: 0; padding: 0; list-style: none; }
+  @media (min-width: 640px) { .toc ol { columns: 2; column-gap: 34px; } }
+  .toc li { margin: 0 0 11px; break-inside: avoid; }
+  .toc li:last-child { margin-bottom: 0; }
+  .toc a {
+    position: relative; display: inline-flex; gap: 10px; align-items: baseline;
+    color: var(--ink); text-decoration: none; font-size: 0.98rem; line-height: 1.4;
+  }
+  .toc a .n { color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; flex: none; }
+  .toc a:hover, .toc a:hover .n { color: var(--accent); }
+  .toc a::before { content: ""; position: absolute; inset: -9px -6px; }
+  .toc a { -webkit-tap-highlight-color: transparent; }
+  @media (prefers-reduced-motion: no-preference) {
+    .toc a { transition: transform 100ms ease-out, color 100ms ease-out; }
+    .toc a:active { transform: scale(0.97); }
+    html { scroll-behavior: smooth; }
+  }
+
+  /* ---------- Footer ---------- */
+  footer { background: var(--rock-950); color: var(--sand-50); padding: 58px 0 38px; }
+  footer a { color: rgba(246,242,233,0.68); text-decoration: none; }
+  footer a:hover { color: #d8672f; }
+  .foot-grid { display: flex; flex-wrap: wrap; gap: 36px; }
+  .foot-about { flex: 1.6 1 280px; min-width: 0; }
+  .foot-brand { display: flex; align-items: center; gap: 10px; font-family: "Zilla Slab", Georgia, serif; font-weight: 700; color: var(--sand-50); }
+  .foot-brand img { width: 28px; height: 28px; border-radius: 7px; }
+  .foot-tag { margin-top: 14px; font-size: 0.92rem; color: rgba(246,242,233,0.55); max-width: 26em; line-height: 1.55; }
+  .foot-col { flex: 1 1 130px; }
+  .foot-col h2 {
+    font-family: "Archivo", sans-serif; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em;
+    color: rgba(246,242,233,0.45); margin: 0 0 14px; font-weight: 600;
+  }
+  .foot-col ul { margin: 0; padding: 0; list-style: none; }
+  .foot-col li { margin-bottom: 9px; font-size: 0.94rem; }
+  .foot-col a { position: relative; }
+  .foot-col a::before { content: ""; position: absolute; inset: -12px -8px; }
+  .foot-bottom {
+    margin-top: 46px; padding-top: 22px; border-top: 1px solid rgba(246,242,233,0.12);
+    display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap;
+    font-size: 0.86rem; color: rgba(246,242,233,0.45);
+  }
+
+  @media (prefers-reduced-transparency: reduce) {
+    nav.site {
+      background: var(--bg);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      border-bottom: 1px solid var(--rule);
+    }
+    nav.site::after { display: none; }
+  }
+  @media (prefers-contrast: more) {
+    nav.site {
+      background: var(--bg);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      border-bottom: 1px solid var(--ink);
+    }
+    nav.site::after { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site">
+  <div class="wrap">
+    <a class="brand" href="/first-whistle-hockey/">First Whistle Hockey</a>
+    <div class="links">
+      <a class="nav-cta" href="https://www.youtube.com/@firstwhistlehockey">Watch on YouTube</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap-narrow">
+    <h1>Privacy Policy</h1>
+    <p class="lede">First Whistle Hockey is a YouTube channel run by Red Rock Apps LLC. This page covers two things: this website page, and First Whistle tools, the private tool the owner uses to manage the channel on YouTube.</p>
+    <p class="effective">Effective 21 November 2026</p>
+  </div>
+</header>
+
+<main>
+
+<section id="this-page">
+  <div class="wrap-narrow">
+    <p class="sec-label">01 &mdash; This page</p>
+    <h2>This page collects nothing.</h2>
+    <p>The First Whistle Hockey page on this site has no sign-up, no cookies and no analytics. It is hosted on GitHub Pages, which may log visits the way any web host does. The links on it go to YouTube, Facebook, Instagram and TikTok, which have their own privacy policies.</p>
+  </div>
+</section>
+
+<section id="the-tool">
+  <div class="wrap-narrow">
+    <p class="sec-label">02 &mdash; The channel tool</p>
+    <h2>A private tool with one user.</h2>
+    <p>First Whistle tools is a command-line tool used by one person, the owner of the First Whistle Hockey channel, on their own computer. It has no public sign-up, no analytics and no advertising. Nothing it reads is sold. The rest of this policy is about that tool.</p>
+  </div>
+</section>
+
+<section id="what-it-accesses">
+  <div class="wrap-narrow">
+    <p class="sec-label">03 &mdash; What it accesses</p>
+    <h2>The channel&rsquo;s own YouTube data.</h2>
+    <p>First Whistle tools uses YouTube API Services with one permission, to manage the signed-in YouTube account. With it, the tool reads and changes:</p>
+    <ul>
+      <li>the channel&rsquo;s videos and their settings: titles, descriptions, tags, captions, thumbnails, privacy and schedule</li>
+      <li>the channel&rsquo;s playlists and basic channel details</li>
+      <li>comments on the channel&rsquo;s videos, including each commenter&rsquo;s public display name and the text of the comment</li>
+    </ul>
+    <p>It does not access email, contacts, files or any other Google data.</p>
+  </div>
+</section>
+
+<section id="how-it-is-used">
+  <div class="wrap-narrow">
+    <p class="sec-label">04 &mdash; How it is used</p>
+    <h2>To run the channel, and nothing else.</h2>
+    <p>The information is used to upload, update and schedule the channel&rsquo;s videos, to post and check the channel&rsquo;s own comments, to read and reply to viewers&rsquo; comments, and to confirm that what is on YouTube matches the release plan.</p>
+    <p>Red Rock Apps LLC does not use it for advertising or profiling, and does not use it to train AI models.</p>
+  </div>
+</section>
+
+<section id="where-it-is-kept">
+  <div class="wrap-narrow">
+    <p class="sec-label">05 &mdash; Where it is kept</p>
+    <h2>On the owner&rsquo;s computer.</h2>
+    <p>The sign-in token that Google issues is stored in a file on the owner&rsquo;s computer. Records of what the tool changed, and copies of some comments, are kept in the channel&rsquo;s private project files and their private backups.</p>
+    <p>The owner may use an AI assistant to operate the tool. When that happens, information the tool displays can be processed by the assistant&rsquo;s provider in order to run it.</p>
+    <p>Beyond that, the information is not shared with anyone.</p>
+  </div>
+</section>
+
+<section id="removing-access">
+  <div class="wrap-narrow">
+    <p class="sec-label">06 &mdash; Removing access</p>
+    <h2>How access and copies are removed.</h2>
+    <p>The owner can remove the tool&rsquo;s access at any time on Google&rsquo;s <a href="https://myaccount.google.com/permissions">account permissions page</a>, and can delete the stored sign-in token.</p>
+    <p>If you commented on a First Whistle Hockey video, you can delete your comment on YouTube. To ask for a saved copy of a comment to be deleted, write to the address below.</p>
+  </div>
+</section>
+
+<section id="youtube">
+  <div class="wrap-narrow">
+    <p class="sec-label">07 &mdash; YouTube&rsquo;s terms</p>
+    <h2>This tool uses YouTube API Services.</h2>
+    <p>Use of the tool is subject to the <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a>. Google&rsquo;s handling of data is described in the <a href="https://policies.google.com/privacy">Google Privacy Policy</a>.</p>
+  </div>
+</section>
+
+<section id="changes">
+  <div class="wrap-narrow">
+    <p class="sec-label">08 &mdash; Changes</p>
+    <h2>If this changes, it changes here.</h2>
+    <p>When this policy is updated, the effective date at the top of the page changes with it.</p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap-narrow">
+    <p class="sec-label">09 &mdash; Contact</p>
+    <h2>Questions about any of this.</h2>
+    <div class="contact-row">
+      <div class="contact-item">
+        <span class="label">Email</span>
+        <a href="mailto:mike@redrockappsllc.com">mike@redrockappsllc.com</a>
+      </div>
+      <div class="contact-item">
+        <span class="label">Operated by</span>
+        <span class="value">Red Rock Apps LLC</span>
+      </div>
+      <div class="contact-item">
+        <span class="label">Based in</span>
+        <span class="value">Rocky Mountain foothills, CO</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-bottom">
+      <span>&copy; 2026 Red Rock Apps LLC</span>
+      <span><a href="/first-whistle-hockey/">First Whistle Hockey</a> &middot; <a href="/first-whistle-hockey/privacy/">Privacy</a></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
